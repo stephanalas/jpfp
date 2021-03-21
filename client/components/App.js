@@ -6,6 +6,7 @@ import Nav from './Nav'
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import Students from './Students';
 import SingleCampus from './SingleCampus';
+import SingleStudent from './SingleStudent';
 const Home = () => {
   return (
     <h1>Campus Directory</h1>
@@ -23,9 +24,10 @@ class App extends Component {
         <Route  component={Nav}/>
         <Route path='/'  component={Home} exact/>
         <Route path='/campuses' exact component={Campuses}/>
-        <Route path='/students'  component={Students}/>
+        <Route path='/students'  component={Students} exact/>
         <Switch>
           <Route path='/campuses/:id' component={SingleCampus} />
+          <Route path='/students/:id' component={SingleStudent} />
         </Switch>
    
       </HashRouter>
