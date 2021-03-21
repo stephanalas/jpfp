@@ -1,19 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { fetchCampus } from '../store'
 
-
-const Campuses = ({ campuses }) => {
+const Campuses = (props) => {
   return (
     <div className='all-campuses-container'>
       <h2>All Campuses</h2>
       <ul className='campus-list'>
         {
-          campuses.map(campus => {
+          props.campuses.map(campus => {
             return (
               
               <li key={campus.id}>
-                <img src={campus.imageUrl} />
-                {campus.name}
+                <Link to={`/campuses/${campus.id}`} onClick={() => props.loadCampus(campus.id)}>
+                  <img src={campus.imageUrl} />
+                  {campus.name}
+                </Link>
               </li>
             )
           })
@@ -22,4 +25,8 @@ const Campuses = ({ campuses }) => {
     </div>
   )
 }
-export default connect(({campuses}) => ({campuses}))(Campuses)
+export default connect(({campuses}) => ({campuses}), (dispatch) => {
+  return {
+    loadCampus: (id) => dispatch(fetchCampus(id))
+  }
+})(Campuses)

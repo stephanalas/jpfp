@@ -18,7 +18,7 @@ app.get('/api/campuses', async (req, res, next) => {
 })
 app.get('/api/campuses/:id', async (req, res, next) => {
   try {
-    res.send(await Campus.findByPk(req.params.id))
+    res.send(await Campus.findByPk(req.params.id,{ include: [Student]}))
   } catch (error) {
     next(error)
   }
@@ -33,7 +33,7 @@ app.get('/api/students', async (req, res, next) => {
 
 app.get('/api/students/:id', async (req, res, next) => {
   try {
-    res.send(await Student.findByPk(req.params.id));
+    res.send(await Student.findByPk(req.params.id, { include: [Campus]}));
   } catch (error) {
     next(error)
   }

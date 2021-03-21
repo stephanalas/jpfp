@@ -4,8 +4,8 @@ import Campuses from './Campuses';
 import { fetchCampuses, fetchStudents } from '../store';
 import Nav from './Nav'
 import { HashRouter, Switch, Route } from 'react-router-dom';
-import Students from '../Students';
-
+import Students from './Students';
+import SingleCampus from './SingleCampus';
 const Home = () => {
   return (
     <h1>Campus Directory</h1>
@@ -22,8 +22,11 @@ class App extends Component {
       <HashRouter>
         <Route  component={Nav}/>
         <Route path='/'  component={Home} exact/>
-        <Route path='/campuses'  component={Campuses}/>
+        <Route path='/campuses' exact component={Campuses}/>
         <Route path='/students'  component={Students}/>
+        <Switch>
+          <Route path='/campuses/:id' component={SingleCampus} />
+        </Switch>
    
       </HashRouter>
       
