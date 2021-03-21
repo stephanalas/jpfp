@@ -16,9 +16,24 @@ app.get('/api/campuses', async (req, res, next) => {
     next(error)
   }
 })
+app.get('/api/campuses/:id', async (req, res, next) => {
+  try {
+    res.send(await Campus.findByPk(req.params.id))
+  } catch (error) {
+    next(error)
+  }
+})
 app.get('/api/students', async (req, res, next) => {
   try {
     res.send(await Student.findAll());
+  } catch (error) {
+    next(error)
+  }
+})
+
+app.get('/api/students/:id', async (req, res, next) => {
+  try {
+    res.send(await Student.findByPk(req.params.id));
   } catch (error) {
     next(error)
   }
