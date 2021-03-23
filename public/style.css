@@ -1,0 +1,86 @@
+body {
+  background-color: gainsboro;
+  box-sizing: border-box;
+}
+.nav-bar {
+  background-color: rgb(179, 175, 175);
+  display: flex;
+  justify-content: space-around;
+  height: 3rem;
+  align-items: center;
+}
+.nav-bar > li {
+  list-style: none;
+}
+.nav-bar a {
+  color: black;
+}  
+.campus-img {
+  height: 5rem;
+  width: 5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.campus-list {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.campus-list-item {
+  list-style: none;
+  background-color: rgb(179, 175, 175);
+  margin: 1rem;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+.all-campus-header {
+  display: flex;
+  justify-content: space-between;
+}
+.add-campus-btn {
+  background-color: rgb(5, 184, 255);
+  border: none;
+  border-radius: 12px;
+  color: cornsilk;
+  text-align: center;
+  width: 10rem;
+}
+.campus-li-tools {
+  display: flex;
+  justify-content: space-between;
+}
+.add-student-btn {
+  background-color: rgb(5, 184, 255);
+  border: none;
+  border-radius: 12px;
+  color: cornsilk;
+  text-align: center;
+  width: 10rem;
+
+}
+.all-students-header {
+  display: flex;
+  justify-content: space-between;
+}
+.student-list {
+  display: flex;
+  justify-content: space-around;
+}
+.student-list > li {
+  background-color: rgb(179, 175, 175);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  list-style: none;
+  height: 15rem;
+  width: 15rem;
+}
+.student-list img {
+  height: 8rem;
+  width: 6rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}

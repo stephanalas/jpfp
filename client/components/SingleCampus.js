@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const SingleCampus = ({campus, students }) => {
 
@@ -11,7 +12,7 @@ const SingleCampus = ({campus, students }) => {
       <p>{campus.description}</p>
       <h3>Students</h3>
       <ul>
-        { students.length  ? students.map(student => <li>{student.firstName} {student.lastName}</li>) : 'No students are currentley enrolled'}
+        { students.length  ? students.map(student => <li key={student.id}><Link to={`/students/${student.id}`}>{student.firstName} {student.lastName}</Link></li> ) : 'No students are currentley enrolled'}
       </ul>
     </div>
     

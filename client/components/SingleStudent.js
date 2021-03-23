@@ -1,20 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const SingleStudent = ({student, campus}) => {
-  console.log(student)
-  console.log(campus)
   return (
     <div>
       <h1>Student Info</h1>
-      
-      {/* <img src={campus.imageUrl} />
-      <h3>{campus.address}</h3>
-      <p>{campus.description}</p>
-      <h3>Students</h3>
       <ul>
-        { students.length  ? students.map(student => <li>{student.firstName} {student.lastName}</li>) : 'No students are currentley enrolled'}
-      </ul> */}
+        <img src={`${student.imageUrl}`} />
+        <li>Name: {student.firstName} {student.lastName}</li>
+        <li>GPA: {student.gpa}</li>
+        <li>Email: {student.email}</li>
+        <li>Campus: { campus.id ? <Link to={`/campuses/${campus.id}`}>{campus.name}</Link> : 'Not currently attending a campus'}</li>
+      </ul>
     </div>
 
     

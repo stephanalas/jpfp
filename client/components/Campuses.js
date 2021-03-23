@@ -14,10 +14,10 @@ const Campuses = (props) => {
       <ul className='campus-list'>
         {
           props.campuses.map(campus => {
-            return (
-              
-              <li key={campus.id} className='campus-list-item'>
 
+            return (
+          
+              <li key={campus.id} className='campus-list-item'>
                 <img src={campus.imageUrl} className='campus-img' />
 
                 <div className='campus-li-right'>
@@ -25,7 +25,10 @@ const Campuses = (props) => {
                     <Link to={`/campuses/${campus.id}`}>
                       {campus.name}
                     </Link>
-                    <h5>Number of Students</h5>
+                    <h5>{
+                        campus.students.length ? `${campus.students.length} Student(s) currently enrolled` : 'No students are enrolled yet'
+                        }
+                    </h5>
                   </div>
                   <div className='campus-li-tools'>
                     <Link to='#'>edit</Link>

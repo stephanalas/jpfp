@@ -1,9 +1,9 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-const {syncSeed, models: { Campus, Student}} = require('./db')
+const { Student, Campus } = require('./db');
 const app = express();
-
+const syncSeed = require('./db/syncSeed');
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname,'..', 'public')))
 
@@ -11,7 +11,7 @@ app.get('/', (req, res, next) => res.sendFile(path.join(__dirname,'..', 'client'
 
 app.get('/api/campuses', async (req, res, next) => {
   try {
-    res.send(await Campus.findAll())
+    res.send(await Campus.findAll({ include:[Student]}))
   } catch (error) {
     next(error)
   }
@@ -25,7 +25,7 @@ app.get('/api/campuses/:id', async (req, res, next) => {
 })
 app.get('/api/students', async (req, res, next) => {
   try {
-    res.send(await Student.findAll());
+    res.send(await Student.findAll({ include:[Campus]}));
   } catch (error) {
     next(error)
   }

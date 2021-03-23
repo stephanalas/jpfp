@@ -7,11 +7,7 @@ import { HashRouter, Switch, Route } from 'react-router-dom';
 import Students from './Students';
 import SingleCampus from './SingleCampus';
 import SingleStudent from './SingleStudent';
-const Home = () => {
-  return (
-    <h1>Campus Directory</h1>
-  )
-}
+import Home from './Home'
 
 class App extends Component {
   componentDidMount() {
