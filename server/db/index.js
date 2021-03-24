@@ -63,7 +63,7 @@ Student.init({
   },
   gpa: {
     type: DataTypes.FLOAT,
-    allowNull: false,
+    // allowNull: false,
     validate: {
       isFloat: true,
       min: 0.0,

@@ -5,13 +5,24 @@ const { Student, Campus } = require('./db');
 const app = express();
 const syncSeed = require('./db/syncSeed');
 app.use(morgan('dev'));
-app.use(express.static(path.join(__dirname,'..', 'public')))
+app.use(express.static(path.join(__dirname,'..', 'public')));
+
+app.use(express.urlencoded({ extended: true}));
+app.use(express.json());
 
 app.get('/', (req, res, next) => res.sendFile(path.join(__dirname,'..', 'client', 'index.html')))
 
 app.get('/api/campuses', async (req, res, next) => {
   try {
     res.send(await Campus.findAll({ include:[Student]}))
+  } catch (error) {
+    next(error)
+  }
+})
+app.post('/api/campuses', async (req, res, next) => {
+  try {
+    console.log(req.body)
+    res.status(201).send(await Campus.create(req.body))
   } catch (error) {
     next(error)
   }
@@ -26,6 +37,13 @@ app.get('/api/campuses/:id', async (req, res, next) => {
 app.get('/api/students', async (req, res, next) => {
   try {
     res.send(await Student.findAll({ include:[Campus]}));
+  } catch (error) {
+    next(error)
+  }
+})
+app.post('/api/students', async (req, res, next) => {
+  try {
+    res.status(201).send(await Student.create(req.body));
   } catch (error) {
     next(error)
   }
