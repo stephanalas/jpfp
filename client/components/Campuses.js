@@ -2,18 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-
-const Campuses = (props) => {
+const Campuses = ({campuses, history}) => {
+  const handleClick = () => {
+    history.push('/campuses/create');
+  }
   return (
     <section className='all-campuses-container'>
       <div className='all-campus-header'>
         <h2>All Campuses</h2>
-        <button className='add-campus-btn'>Add Campus</button>
+        <button className='add-campus-btn' onClick={handleClick}>Add Campus</button>
       </div>
       
       <ul className='campus-list'>
         {
-          props.campuses.map(campus => {
+          campuses.map(campus => {
 
             return (
           
@@ -26,13 +28,13 @@ const Campuses = (props) => {
                       {campus.name}
                     </Link>
                     <h5>{
-                        campus.students.length ? `${campus.students.length} Student(s) currently enrolled` : 'No students are enrolled yet'
+                        campus.students ? `${campus.students.length} Student(s) currently enrolled` : 'No students are enrolled yet'
                         }
                     </h5>
                   </div>
                   <div className='campus-li-tools'>
                     <Link to='#'>edit</Link>
-                    <button className='campus-delete-btn'>delete</button>
+                    <button className='campus-delete-btn' >delete</button>
                   </div>
                 </div>
               </li>
@@ -43,4 +45,5 @@ const Campuses = (props) => {
     </section>
   )
 }
-export default connect(({campuses}) => ({campuses}))(Campuses)
+// export default connect(({campuses}) => ({campuses}))(Campuses)
+export default connect((state) => state)(Campuses)
