@@ -2137,13 +2137,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Campuses__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Campuses */ "./client/components/Campuses.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./client/store.js");
 /* harmony import */ var _Nav__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Nav */ "./client/components/Nav.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _Students__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Students */ "./client/components/Students.js");
-/* harmony import */ var _SingleCampus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SingleCampus */ "./client/components/SingleCampus.js");
-/* harmony import */ var _SingleStudent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SingleStudent */ "./client/components/SingleStudent.js");
-/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Home */ "./client/components/Home.js");
-/* harmony import */ var _AddCampusForm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./AddCampusForm */ "./client/components/AddCampusForm.js");
-/* harmony import */ var _AddStudentForm__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./AddStudentForm */ "./client/components/AddStudentForm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _Students__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Students */ "./client/components/Students.js");
+/* harmony import */ var _SingleCampus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SingleCampus */ "./client/components/SingleCampus.js");
+/* harmony import */ var _SingleStudent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SingleStudent */ "./client/components/SingleStudent.js");
+/* harmony import */ var _Home__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Home */ "./client/components/Home.js");
+/* harmony import */ var _AddCampusForm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./AddCampusForm */ "./client/components/AddCampusForm.js");
+/* harmony import */ var _AddStudentForm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./AddStudentForm */ "./client/components/AddStudentForm.js");
 
 
 
@@ -2163,35 +2164,35 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
   }
 
   render() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.HashRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.HashRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
       component: _Nav__WEBPACK_IMPORTED_MODULE_4__.default
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
       path: "/",
-      component: _Home__WEBPACK_IMPORTED_MODULE_9__.default,
+      component: _Home__WEBPACK_IMPORTED_MODULE_8__.default,
       exact: true
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
       path: "/campuses",
       exact: true,
       component: _Campuses__WEBPACK_IMPORTED_MODULE_2__.default
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
       path: "/students",
-      component: _Students__WEBPACK_IMPORTED_MODULE_6__.default,
+      component: _Students__WEBPACK_IMPORTED_MODULE_5__.default,
       exact: true
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
       path: "/students/create",
       exact: true,
-      component: _AddStudentForm__WEBPACK_IMPORTED_MODULE_11__.default
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      component: _AddStudentForm__WEBPACK_IMPORTED_MODULE_10__.default
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
       path: "/campuses/create",
       exact: true,
-      component: _AddCampusForm__WEBPACK_IMPORTED_MODULE_10__.default
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      component: _AddCampusForm__WEBPACK_IMPORTED_MODULE_9__.default
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
       path: "/campuses/:id",
       exact: true,
-      component: _SingleCampus__WEBPACK_IMPORTED_MODULE_7__.default
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      component: _SingleCampus__WEBPACK_IMPORTED_MODULE_6__.default
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
       path: "/students/:id",
-      component: _SingleStudent__WEBPACK_IMPORTED_MODULE_8__.default
+      component: _SingleStudent__WEBPACK_IMPORTED_MODULE_7__.default
     })));
   }
 
