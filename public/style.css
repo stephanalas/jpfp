@@ -84,3 +84,14 @@ body {
   margin-left: 1rem;
   margin-right: 1rem;
 }
+form {
+  display: flex;
+  flex-flow: column;
+}
+form > input {
+  width: 15rem;
+  height: 2rem;
+}
+form > * {
+  margin: 1rem;
+}
