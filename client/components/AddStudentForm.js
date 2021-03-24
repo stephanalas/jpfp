@@ -31,10 +31,15 @@ class AddStudentForm extends Component {
       <div>
         <h1>Enter student info</h1>
         <form onSubmit={onSubmit}>
-          <label htmlFor={firstName} >First Name:</label>
-          <input name='firstName' value={firstName} onChange={onChange} ></input>
-          <label htmlFor={lastName} >Last Name:<input name='lastName'  value={lastName} onChange={onChange} ></input></label>
-          <label htmlFor={email} >E-mail:<input name='email'  value={email} onChange={onChange} ></input></label>
+          <label htmlFor={firstName} >First Name:
+            <input name='firstName' value={firstName} onChange={onChange} ></input>
+          </label>
+          <label htmlFor={lastName} >Last Name:
+            <input name='lastName'  value={lastName} onChange={onChange} ></input>
+          </label>
+          <label htmlFor={email} >E-mail:
+            <input name='email'  value={email} onChange={onChange} ></input>
+          </label>
           
           <button className='add-campus-btn'>Add Student</button>
         </form>

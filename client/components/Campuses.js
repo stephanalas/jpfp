@@ -45,5 +45,4 @@ const Campuses = ({campuses, history}) => {
     </section>
   )
 }
-// export default connect(({campuses}) => ({campuses}))(Campuses)
-export default connect((state) => state)(Campuses)
+export default connect((state) => (state))(Campuses)

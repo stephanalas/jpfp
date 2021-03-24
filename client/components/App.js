@@ -36,18 +36,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps =({ campuses}) => {
-  return {
-    campuses
-  }
-}
-const mapDispatchToProps = (dispatch) => {
+
+export default connect(state => state, (dispatch) => {
   return {
     load: () => {
       dispatch(fetchCampuses())
       dispatch(fetchStudents())
     }
   }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+})(App);

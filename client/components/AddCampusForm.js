@@ -21,10 +21,7 @@ class AddCampusForm extends Component {
     }
   }
   onChange(ev) {
-    const change = {};
-    change[ev.target.name] = ev.target.value;
-    change[ev.target.address] = ev.target.value;
-    this.setState(change);
+    this.setState({[ev.target.name] : ev.target.value})
   }
   render() {
     const { state: {name, address}, onChange, onSubmit } = this;
@@ -32,8 +29,12 @@ class AddCampusForm extends Component {
       <div>
         <h1>Campus Name</h1>
         <form onSubmit={onSubmit}>
-          <label htmlFor={name} >Name:<input name='name' id='name' value={name} onChange={onChange} ></input></label>
-          <label htmlFor={address} >Address:<input name='address' id='address' value={address} onChange={onChange} ></input></label>
+          <label htmlFor={name} >Name:
+            <input name='name' id='name' value={name} onChange={onChange} ></input>
+          </label>
+          <label htmlFor={address} >Address:
+            <input name='address' id='address' value={address} onChange={onChange} ></input>
+          </label>
           
           <button className='add-campus-btn'>Add Campus</button>
         </form>

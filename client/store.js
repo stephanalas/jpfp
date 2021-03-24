@@ -2,11 +2,13 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import loggingMiddleware from 'redux-logger';
 import thunk from 'redux-thunk';
 import axios from 'axios';
+
 // action constants
 const SET_CAMPUSES = 'SET_CAMPUSES';
 const SET_STUDENTS = 'SET_STUDENTS';
 const CREATE_CAMPUS = 'CREATE_CAMPUS';
 const CREATE_STUDENT = 'CREATE_STUDENT';
+
 // action creators
 const setCampuses = (campuses) => {
   return {
@@ -32,19 +34,20 @@ const _createStudent = (student) => {
     student
   }
 }
-// thunk creators
+
+// thunks
 export const fetchCampuses = () => {
   return async (dispatch) => {
     const campuses = (await axios.get('/api/campuses')).data
     dispatch(setCampuses(campuses));
   }
 }
+
 export const createCampus = (name, address, history) => {
   return async (dispatch) => {
     const campus = (await axios.post('/api/campuses', {name, address} )).data;
     dispatch(_createCampus(campus));
-    // history.push(`/campuses/${campus.id}`);
-    history.push('/campuses')
+    history.push('/campuses');
   }
 }
 
@@ -60,7 +63,7 @@ export const createStudent = (firstName, lastName, email, history) => {
   return async (dispatch) => {
     const student = (await axios.post('/api/students/', {firstName, lastName, email})).data;
     dispatch(_createStudent(student));
-    history.push('/students')
+    history.push('/students');
   }
 }
  
