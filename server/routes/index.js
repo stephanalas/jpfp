@@ -10,6 +10,25 @@ router.get('/campuses', async (req, res, next) => {
     next(error)
   }
 })
+
+router.get('/campuses/:id', async (req, res, next) => {
+  try {
+    res.send(await Campus.findByPk(req.params.id,{ include: [Student]}))
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.delete('/campuses/:id', async (req, res, next) => {
+  try {
+    const campus = await Campus.findByPk(req.params.id);
+    await campus.destroy();
+    console.log('campus deleted');
+  } catch (error) {
+    next(error)
+  }
+})
+
 router.post('/campuses', async (req, res, next) => {
   try {
     console.log(req.body)
@@ -18,13 +37,7 @@ router.post('/campuses', async (req, res, next) => {
     next(error)
   }
 })
-router.get('/campuses/:id', async (req, res, next) => {
-  try {
-    res.send(await Campus.findByPk(req.params.id,{ include: [Student]}))
-  } catch (error) {
-    next(error)
-  }
-})
+
 router.get('/students', async (req, res, next) => {
   try {
     res.send(await Student.findAll({ include:[Campus]}));
@@ -32,6 +45,7 @@ router.get('/students', async (req, res, next) => {
     next(error)
   }
 })
+
 router.post('/students', async (req, res, next) => {
   try {
     res.status(201).send(await Student.create(req.body));
@@ -43,6 +57,16 @@ router.post('/students', async (req, res, next) => {
 router.get('/students/:id', async (req, res, next) => {
   try {
     res.send(await Student.findByPk(req.params.id, { include: [Campus]}));
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.delete('/students/:id', async (req, res, next) => {
+  try {
+    const student = await Student.findByPk(req.params.id);
+    await student.destroy();
+    console.log('student deleted');
   } catch (error) {
     next(error)
   }

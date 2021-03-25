@@ -1,16 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { destroyCampus} from '../store';
 
-const Campuses = ({campuses, history}) => {
-  const handleClick = () => {
+const Campuses = (props) => {
+  const { history, campuses, destroy } = props;
+  const create = () => {
     history.push('/campuses/create');
-  }
+  };
+
   return (
     <section className='all-campuses-container'>
       <div className='all-campus-header'>
         <h2>All Campuses</h2>
-        <button className='add-campus-btn' onClick={handleClick}>Add Campus</button>
+        <button className='add-campus-btn' onClick={create}>Add Campus</button>
       </div>
       
       <ul className='campus-list'>
@@ -34,15 +37,21 @@ const Campuses = ({campuses, history}) => {
                   </div>
                   <div className='campus-li-tools'>
                     <Link to='#'>edit</Link>
-                    <button className='campus-delete-btn' >delete</button>
+                    <button className='campus-delete-btn' onClick={() => destroy(campus)} >delete</button>
                   </div>
                 </div>
               </li>
-            )
+            );
           })
         }
       </ul>
     </section>
-  )
-}
-export default connect((state) => (state))(Campuses)
+  );
+};
+export default connect((state) => (state), (dispatch) => {
+  return {
+    destroy: (campus) => {
+      dispatch(destroyCampus(campus));
+    }
+  }
+})(Campuses)
