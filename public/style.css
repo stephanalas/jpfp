@@ -2,6 +2,10 @@ body {
   background-color: gainsboro;
   box-sizing: border-box;
 }
+body * {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
 .nav-bar {
   background-color: rgb(179, 175, 175);
   display: flex;
@@ -16,29 +20,41 @@ body {
   color: black;
 }  
 .campus-img {
-  height: 5rem;
-  width: 5rem;
+  height: 250px;
+  width: 300px;
   margin-left: 1rem;
   margin-right: 1rem;
+  margin-top: 1rem
 }
 .campus-list {
   margin: 0;
   padding: 0;
   display: flex;
+  flex-flow: wrap;
 }
-.campus-list-item {
+.campus-card {
   list-style: none;
   background-color: rgb(179, 175, 175);
-  margin: 1rem;
   display: flex;
-  flex-flow: row;
-  align-items: center;
-  justify-content: space-around;
-  width: 100%;
+  height: 18rem;
+  margin-left: 8rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  width: 40%;
 }
+.campus-card-info {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+
 .all-campus-header {
   display: flex;
   justify-content: space-between;
+  flex-flow: row;
 }
 .add-btn {
   background-color: rgb(5, 184, 255);
@@ -47,19 +63,12 @@ body {
   color: cornsilk;
   text-align: center;
   width: 10rem;
+  outline: none;
 }
-.campus-li-tools {
+.campus-card-tools {
   display: flex;
   justify-content: space-between;
-}
-.add-student-btn {
-  background-color: rgb(5, 184, 255);
-  border: none;
-  border-radius: 12px;
-  color: cornsilk;
-  text-align: center;
-  width: 10rem;
-
+  margin-bottom: 1rem;
 }
 .all-students-header {
   display: flex;
@@ -109,3 +118,47 @@ form > * {
   display: flex;
   justify-content: center;
 }
+.no-view {
+ display: flex;
+ justify-content: center;
+ flex-flow: column;
+ align-items: center;
+ padding: 1rem;
+ margin: 3rem
+}
+.no-view > button {
+  margin: 2rem;
+  padding: 0.5rem;
+}
+
+.add-view {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.add-form {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  width: fit-content;
+}
+.add-view form > * {
+  display: flex;
+  flex: 1rem;
+  justify-content: center;
+  font-size: large;
+}
+.add-view form > section{
+  display: flex;
+  flex-flow: column;
+}
+.add-view button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.add-btn { transition: all .2s ease-in-out; }
+.add-btn:hover { transform: scale(1.1); }
+
