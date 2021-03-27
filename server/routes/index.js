@@ -5,7 +5,11 @@ const router = express.Router();
 // /api
 router.get('/campuses', async (req, res, next) => {
   try {
-    res.send(await Campus.findAll({ include:[Student]}))
+    if ((await Campus.findAll()).length) {
+      res.send(await Campus.findAll({ include:[Student]}))
+    } else {
+      res.send(await Campus.findAll())
+    }
   } catch (error) {
     next(error)
   }

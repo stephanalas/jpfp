@@ -26,21 +26,24 @@ class AddCampusForm extends Component {
   render() {
     const { state: {name, address}, onChange, onSubmit } = this;
     return (
-      <div>
-        
-        <h1>Campus Name</h1>
-        <h2>add campus</h2>
-        <form onSubmit={onSubmit}>
-          <label htmlFor={name} >Name:
+      <main id='add-campus-view' className='add-view'>
+        <h2>Enter Campus Info</h2>
+        <form id='add-campus-form' className='add-form' onSubmit={onSubmit}>
+          <section>
+            <label htmlFor={name} >Name:
+            </label>
             <input name='name' value={name} onChange={onChange} ></input>
-          </label>
-          <label htmlFor={address} >Address:
+          </section>
+          <section>
+            <label htmlFor={address} >Address:
+            </label>
             <input name='address' value={address} onChange={onChange} ></input>
-          </label>
+
+          </section>
           
-          <button className='add-campus-btn'>Add Campus</button>
+          <button className='add-btn'>Add Campus</button>
         </form>
-      </div>
+      </main>
     )
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createCampus, createStudent } from '../store';
+import {  createStudent } from '../store';
 
 class AddStudentForm extends Component {
   constructor() {
@@ -28,23 +28,27 @@ class AddStudentForm extends Component {
   render() {
     const { state: {firstName, lastName, email}, onChange, onSubmit } = this;
     return (
-      <div>
-        <h1>Enter student info</h1>
-        <h2>Add student</h2>
-        <form onSubmit={onSubmit}>
-          <label htmlFor={firstName} >First Name:
+      <main id='add-student-view' className='add-view'>
+        <h2>Enter Student Info</h2>
+        <form id='add-form' onSubmit={onSubmit}>
+          <section>
+            <label htmlFor={firstName} >First Name:
+            </label>
             <input name='firstName' value={firstName} onChange={onChange} ></input>
-          </label>
-          <label htmlFor={lastName} >Last Name:
+          </section>
+          <section>
+            <label htmlFor={lastName} >Last Name:
+            </label>
             <input name='lastName'  value={lastName} onChange={onChange} ></input>
-          </label>
-          <label htmlFor={email} >E-mail:
+          </section>
+          <section>
+            <label htmlFor={email} >E-mail:
+            </label>
             <input name='email'  value={email} onChange={onChange} ></input>
-          </label>
-          
-          <button className='add-campus-btn'>Add Student</button>
+          </section>
+          <button className='add-btn'>Add Student</button>
         </form>
-      </div>
+      </main>
     )
   }
 }

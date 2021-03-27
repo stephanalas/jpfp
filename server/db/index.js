@@ -1,5 +1,5 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
-const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/jpfp-db');
+const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost/jpfp_db');
 class Campus extends Model {}
 class Student extends Model {}
 

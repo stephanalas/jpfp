@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Campuses from './Campuses';
+import AllCampuses from './AllCampuses';
 import { fetchCampuses, fetchStudents } from '../store';
 import Nav from './Nav'
 import { HashRouter, Switch, Route } from 'react-router-dom';
-import Students from './Students';
+import Students from './AllStudents';
 import SingleCampus from './SingleCampus';
 import SingleStudent from './SingleStudent';
 import Home from './Home'
@@ -21,8 +21,8 @@ class App extends Component {
     return (
       <HashRouter>
         <Route  component={Nav}/>
-        <Route path='/'  component={Home} exact/>
-        <Route path='/campuses' exact component={Campuses}/>
+        <Route path='/'  component={AllCampuses} exact/>
+        <Route path='/campuses' exact component={AllCampuses}/>
         <Route path='/students'  component={Students} exact/>
         <Switch>
           <Route path='/campuses/update/:id' component={UpdateCampus} />

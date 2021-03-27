@@ -26,7 +26,7 @@ class  SingleStudent extends Component {
     this.setState({[ev.target.name]: ev.target.value})
   }
   render() {
-    const { student, campus , history} = this.props
+    const { student, campus} = this.props
     const { onChange, onSubmit, state: { firstName, lastName, email} } = this
     return (
       <div id='update-student-main'>
