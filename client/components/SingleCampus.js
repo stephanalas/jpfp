@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-const SingleCampus = ({campus, students }) => {
+import { unregisterStudent } from '../store';
+const SingleCampus = ({campus, students, unregister }) => {
 
   return (
     <div>
@@ -12,7 +12,7 @@ const SingleCampus = ({campus, students }) => {
       <p>{campus.description}</p>
       <h3>Students</h3>
       <ul>
-        { students.length  ? students.map(student => <li key={student.id}><Link to={`/students/${student.id}`}>{student.firstName} {student.lastName}</Link></li> ) : 'No students are currentley enrolled'}
+        { students.length  ? students.map(student => <li key={student.id}><Link to={`/students/${student.id}`}>{student.firstName} {student.lastName}</Link><button onClick={() => unregister(student.id) }>Unregister</button></li> ) : 'No students are currentley enrolled'}
       </ul>
     </div>
     
@@ -26,5 +26,8 @@ export default connect((state,otherProps) => {
     campus,
     students
   }
-  return state
+}, (dispatch) => {
+  return {
+    unregister: (id) => dispatch(unregisterStudent(id))
+  }
 })(SingleCampus)

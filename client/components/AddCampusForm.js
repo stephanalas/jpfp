@@ -27,13 +27,15 @@ class AddCampusForm extends Component {
     const { state: {name, address}, onChange, onSubmit } = this;
     return (
       <div>
+        
         <h1>Campus Name</h1>
+        <h2>add campus</h2>
         <form onSubmit={onSubmit}>
           <label htmlFor={name} >Name:
-            <input name='name' id='name' value={name} onChange={onChange} ></input>
+            <input name='name' value={name} onChange={onChange} ></input>
           </label>
           <label htmlFor={address} >Address:
-            <input name='address' id='address' value={address} onChange={onChange} ></input>
+            <input name='address' value={address} onChange={onChange} ></input>
           </label>
           
           <button className='add-campus-btn'>Add Campus</button>

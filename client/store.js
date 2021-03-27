@@ -10,7 +10,9 @@ const CREATE_CAMPUS = 'CREATE_CAMPUS';
 const CREATE_STUDENT = 'CREATE_STUDENT';
 const DESTROY_CAMPUS = 'DESTROY_CAMPUS';
 const DESTROY_STUDENT = 'DESTROY_STUDENT';
-
+const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
+const UPDATE_STUDENT = 'UPDATE_STUDENT';
+const UNREGISTER_STUDENT = 'UNREGISTER_STUDENT'
 // action creators
 const setCampuses = (campuses) => {
   return {
@@ -30,6 +32,12 @@ const _destroyCampus = (campus) => {
     campus
   };
 };
+const _updateCampus = (campus) => {
+  return {
+    type: UPDATE_CAMPUS,
+    campus
+  }
+}
 const setStudents = (students) => {
   return {
     type: SET_STUDENTS,
@@ -42,13 +50,24 @@ const _createStudent = (student) => {
     student
   };
 };
+const _updateStudent = (student) => {
+  return {
+    type: UPDATE_STUDENT,
+    student
+  }
+}
 const _destroyStudent = (student) => {
   return {
     type: DESTROY_STUDENT,
     student
   };
 };
-
+const _unregisterStudent = (student) => {
+  return {
+    type: UNREGISTER_STUDENT,
+    student
+  }
+}
 // thunks
 export const fetchCampuses = () => {
   return async (dispatch) => {
@@ -75,6 +94,19 @@ export const createCampus = (name, address, history) => {
     }
   };
 };
+export const updateCampus = (id, data, history) => {
+  return async (dispatch) => {
+    try {
+
+      const campus = (await axios.put(`/api/campuses/${id}`, data)).data;
+      dispatch(_updateCampus(campus))
+      history.push('/campuses'); 
+    } catch (error) {
+      console.log('called from updateCampus thunk');
+      console.log(error);
+    }
+  }
+}
 
 export const destroyCampus = (campus) => {
   return async (dispatch) => {
@@ -115,6 +147,29 @@ export const createStudent = (firstName, lastName, email, history) => {
     }
   };
 };
+export const updateStudent = (id, data, history) => {
+  return async (dispatch) => {
+    try {
+      const student = (await axios.put(`/api/students/${id}`, data)).data
+      dispatch(_updateStudent(student));
+      history.push(`/students/${student.id}`);
+    } catch (error) {
+      console.log('called from updateStudent thunk');
+      console.log(error)
+    }
+  }
+}
+export const unregisterStudent = (id) => {
+  return async (dispatch) => {
+    try {
+      const student = (await axios.put(`/api/students/${id}`)).data
+      dispatch(_unregisterStudent(student))
+    } catch (error) {
+      console.log('called from unregisterStudent thunk')
+      console.log(error);
+    }
+  }
+}
 
 export const destroyStudent = (student) => {
   return async (dispatch) => {
@@ -131,24 +186,30 @@ export const destroyStudent = (student) => {
 
 // reducers
 const campusesReducer = (state = [], action) => {
-  if (action.type === SET_CAMPUSES) {
+  const { type } = action;
+  if (type === SET_CAMPUSES) {
     return action.campuses;
-  } else if (action.type === CREATE_CAMPUS) {
+  } else if (type === CREATE_CAMPUS) {
     state = [...state, action.campus];
-  } else if (action.type === DESTROY_CAMPUS) {
-    state = state.filter(campus => campus.id !== action.campus.id)
+  } else if (type === DESTROY_CAMPUS) {
+    state = state.filter(campus => campus.id !== action.campus.id);
+  } else if (type === UPDATE_CAMPUS) {
+    state = state.filter(campus => campus.id !== action.campus.id).concat([action.campus]);
   }
   return state;
 };
 
-const studentsReducer = (state = [],action) => {
-  if (action.type === SET_STUDENTS) {
+const studentsReducer = (state = [], action) => {
+  const { type } = action;
+  if (type === SET_STUDENTS) {
     return action.students;
-  } else if (action.type === CREATE_STUDENT) {
+  } else if (type === CREATE_STUDENT) {
     return [...state, action.student];
-  } else if (action.type === DESTROY_STUDENT) {
+  } else if (type === DESTROY_STUDENT) {
     state = state.filter(student => student.id !== action.student.id)
-  }
+  } else if (type === UNREGISTER_STUDENT || type === UPDATE_STUDENT) {
+    state = state.filter(student => student.id !== action.student.id).concat([action.student])
+  } 
   return state
 };
 

@@ -40,7 +40,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.add-campus-btn {
+.add-btn {
   background-color: rgb(5, 184, 255);
   border: none;
   border-radius: 12px;
@@ -94,4 +94,18 @@ form > input {
 }
 form > * {
   margin: 1rem;
+}
+.edit-student {
+  display: none;
+}
+.edit-student-selected {
+
+}
+.update-student-main {
+  display: flex;
+  flex-flow: column;
+}
+.update-container {
+  display: flex;
+  justify-content: center;
 }

@@ -30,6 +30,7 @@ class AddStudentForm extends Component {
     return (
       <div>
         <h1>Enter student info</h1>
+        <h2>Add student</h2>
         <form onSubmit={onSubmit}>
           <label htmlFor={firstName} >First Name:
             <input name='firstName' value={firstName} onChange={onChange} ></input>
