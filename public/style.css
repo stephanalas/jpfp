@@ -104,7 +104,11 @@ body * {
 }
 
 
-
+@media (min-width: 753px) {
+  .add-view section {
+    width: 50%;
+  }
+}
 /* #all-campus-view {
   width: fit-content;
 } */
