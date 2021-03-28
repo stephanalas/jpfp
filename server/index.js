@@ -3,7 +3,7 @@ const syncSeed = require('./db/syncSeed');
 const { db } = require('./db/index')
 
 const init = () => {
-  syncSeed()
+  // syncSeed()
   db.sync({force: true})
   const port = process.env.PORT || 3000;
 
