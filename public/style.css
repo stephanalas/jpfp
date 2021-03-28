@@ -76,6 +76,11 @@ body * {
 .add-btn { transition: all .2s ease-in-out; }
 .add-btn:hover { transform: scale(1.1); }
 
+.delete-btn {
+  background-color: rgb(223,70,97);
+  border: none;
+  height: 2rem;
+}
 
 /* add-campus and add-student view */
 
@@ -103,6 +108,73 @@ body * {
   height: 2rem;
 }
 
+/* images */
+
+.campus-img, .student-img {
+  width: 100%
+}
+
+/* all-campus-view */
+#all-campus-view {
+  
+}
+.all-campus-header, .all-students-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 0.5rem;
+}
+
+.campus-list, .student-list{
+  list-style: none;
+  display: flex;
+  flex-flow: column;
+  margin: 0;
+  padding-inline-start: 0;
+  padding: 1rem
+}
+.campus-card, .student-card {
+  background-color: rgb(179, 175, 175);
+  margin: 1rem 0;
+}
+
+.campus-card-info {
+  display: flex;
+  flex-flow: column;
+}
+.campus-card-info-name {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.campus-card-info-name h5 {
+  margin-top: 0;
+}
+.campus-card-info-name a {
+  color: rgb(22, 104, 255);
+  font-weight: bolder;
+}
+.campus-card-tools {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  align-items: center;
+}
+
+/* all-student-view  */
+
+.student-card-info {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.student-card-info button {
+  margin-top: 1rem;
+  width: 5rem;
+}
 
 @media (min-width: 753px) {
   .add-view section {

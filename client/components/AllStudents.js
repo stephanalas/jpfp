@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { destroyStudent } from '../store'
+import { destroyStudent } from '../store';
+import StudentCard from './StudentCard';
+
 const Students = ({ students, history, destroy}) => {
 
   if (students.length === 0) {
@@ -21,17 +22,7 @@ const Students = ({ students, history, destroy}) => {
       </div>
       <ul className='student-list'>
         {
-          students.map(student => {
-
-            return (
-              <li key={student.id} className='student-li'>
-                <img src={student.imageUrl}/>
-                <Link to={`/students/${ student.id }`}>{ student.firstName } { student.lastName }</Link>
-                { student.campus ? <span>Attending:  <Link to={`/campuses/${ student.campus.id }`} >{ student.campus.name }</Link> </span> : 'Currently not attending a campus'}
-                <button onClick={() => destroy(student)}>delete</button>
-              </li>
-            );
-          })
+          students.map(student => <StudentCard key={student.id} destroy={destroy} student={student} />)
         }
       </ul>
     </section>
