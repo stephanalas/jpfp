@@ -17,8 +17,11 @@ body * {
   width: 100%;
   height: 100%;
 
-
 }
+
+
+/* nav-bar */
+
 .nav-bar {
   background-color: rgb(179, 175, 175);
   display: flex;
@@ -38,6 +41,8 @@ body * {
   color: black;
 }
 
+/* No campuses and No students view */
+
 .no-view {
   width: 100%;
   height: 70%;
@@ -55,8 +60,8 @@ body * {
   text-align: center;
   font-size: 2rem;
 }
- /* button styling */
-
+ 
+/* button styling */
 
 .add-btn {
   background-color: rgb(5, 184, 255);
@@ -70,7 +75,36 @@ body * {
 }
 .add-btn { transition: all .2s ease-in-out; }
 .add-btn:hover { transform: scale(1.1); }
- 
+
+
+/* add-campus and add-student view */
+
+.add-view {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  height: 100%;
+  padding-top: 2rem;
+}
+.add-view > form {
+  padding-top: 0.5rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 70%;
+  height: 100%;
+}
+.add-view > form > section {
+  display: flex;
+  flex-flow: column;
+  padding: 1rem;
+}
+.add-view input {
+  height: 2rem;
+}
+
+
+
 /* #all-campus-view {
   width: fit-content;
 } */
