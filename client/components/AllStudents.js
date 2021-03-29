@@ -15,9 +15,9 @@ const Students = ({ students, history, destroy}) => {
     )
   }
   return (
-    <section className='all-students-container'>
+    <main className='all-students-view'>
       <div className='all-students-header'>
-        <h2>All Students</h2>
+        <h1>All Students</h1>
         <button className='add-btn' onClick={ () => history.push('/students/create') }>Add Student</button>
       </div>
       <ul className='student-list'>
@@ -25,7 +25,7 @@ const Students = ({ students, history, destroy}) => {
           students.map(student => <StudentCard key={student.id} destroy={destroy} student={student} />)
         }
       </ul>
-    </section>
+    </main>
   )
 }
 export default connect(state => state, (dispatch) => {

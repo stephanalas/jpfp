@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateCampus } from '../store';
-
+import CampusCard from './CampusCard';
 class UpdateCampus extends Component {
   constructor(props) {
     super(props);
@@ -27,18 +27,22 @@ class UpdateCampus extends Component {
   render() {
     const { onSubmit, onChange, state: {name, address}} = this
     return (
-      <div>
-        <h2>update campus</h2>
+      <main className='update-view' id='update-campus-view'>
+        
+        <h1>Update campus</h1>
+        {/* <CampusCard key={this.props.campus}  /> */}
         <form onSubmit={onSubmit}>
-          <label htmlFor={name} >Name:
-              <input name='name' value={name} onChange={onChange} ></input>
-            </label>
-            <label htmlFor={address} >Address:
-              <input name='address' value={address} onChange={onChange} ></input>
-            </label>
-            <button>Update Campus</button>
+          <section>
+            <label htmlFor={name} >Name: </label>
+            <input name='name' value={name} onChange={onChange} ></input>
+          </section>
+          <section>
+            <label htmlFor={address} >Address: </label>
+            <input name='address' value={address} onChange={onChange} ></input>
+          </section>
+            <button className='add-btn'>Update Campus</button>
         </form>
-      </div>
+      </main>
     )
   }
 }

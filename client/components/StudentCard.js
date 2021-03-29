@@ -10,7 +10,7 @@ const StudentCard = ({student, destroy}) => {
         <Link to={`/students/${ student.id }`}><h2>{ student.firstName } { student.lastName }</h2></Link>
 
           { 
-            student.campus ? <span>Attending:  
+            student.campus ? <span>  
             <Link to={`/campuses/${ student.campus.id }`} >{ student.campus.name }</Link> </span> 
               : 'Currently not attending a campus'
           }

@@ -5,16 +5,32 @@ import { unregisterStudent } from '../store';
 const SingleCampus = ({campus, students, unregister }) => {
 
   return (
-    <div>
-      <h1>{campus.name}</h1>
-      <img src={campus.imageUrl} />
-      <h3>{campus.address}</h3>
-      <p>{campus.description}</p>
+    <main className='single-campus-view'>
+      <section className='single-campus-info'>
+        <div className='image-with-info'>
+          <section>
+            <img src={campus.imageUrl} className='campus-img' /> 
+          </section>
+          <section className='single-campus-name-bio'>
+            <h1>{campus.name}</h1>
+            <p className='campus-description'>{campus.description}</p>
+          </section>
+        </div>
+        <section className='tools'>
+        <h3>{campus.address}</h3>
+
+        </section>
+      </section>
+      
+      <section className='students-on-campus'>
+
+      </section>
+
       <h3>Students</h3>
       <ul>
         { students.length  ? students.map(student => <li key={student.id}><Link to={`/students/${student.id}`}>{student.firstName} {student.lastName}</Link><button onClick={() => unregister(student.id) }>Unregister</button></li> ) : 'No students are currentley enrolled'}
       </ul>
-    </div>
+    </main>
     
   )
 } 
