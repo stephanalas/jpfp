@@ -119,9 +119,9 @@ body * {
 }
 
 /* all-campus-view */
-#all-campus-view {
+/* #all-campus-view {
   
-}
+} */
 .all-campus-header, .all-students-header {
   display: flex;
   justify-content: space-between;
@@ -130,7 +130,7 @@ body * {
   height: 5rem;
 }
 
-.campus-list, .student-list{
+.campus-list {
   list-style: none;
   display: flex;
   flex-flow: column;
@@ -138,7 +138,7 @@ body * {
   padding-inline-start: 0;
   padding: 1rem
 }
-.campus-card, .student-card {
+.campus-card {
   background-color: rgb(179, 175, 175);
   margin: 1rem 0;
 }
@@ -170,6 +170,25 @@ body * {
 
 /* all-student-view  */
 
+.student-list {
+  padding-left: 0;
+  list-style: none;
+}
+.student-list .student-img {
+  width: 100%;
+}
+
+.student-card {
+  margin: 5rem;
+  background-color: rgb(179, 175, 175);
+}
+.student-card-info {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  height: 35%;
+}
+/* 
 .student-card-info {
   display: flex;
   flex-flow: column;
@@ -179,7 +198,7 @@ body * {
 .student-card-info button {
   margin-top: 1rem;
   width: 5rem;
-}
+} */
 
 /* update-campus */
 
@@ -216,7 +235,7 @@ body * {
 }
 .single-campus-info {
   display: flex;
-  flex-flow: column;
+  flex-flow: column; 
 }
 .single-campus-name-bio {
   display: flex;
@@ -226,6 +245,34 @@ body * {
 .single-campus-name-bio h1 {
   margin: 0.5rem 1rem;
 }
+.campus-btns {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 1rem;
+  width: 100%;
+}
+.single-view-edit {
+  background-color: rgb(8, 168, 8);
+  width: 6rem;
+  border: none;
+  height: 3rem;
+  border-radius: 12px;
+}
+.single-view-delete {
+  background-color: rgb(223,70,97);
+  width: 6rem;
+  border: none;
+  height: 3rem;
+  border-radius: 12px;
+}
+.tools {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+}
+
+
 @media (min-width: 753px) {
   .add-view section {
     width: 50%;
@@ -236,9 +283,7 @@ body * {
 }
 @media (min-width:777px) {
   /* allcampusview */
-  .campus-img, .student-img {
-    /* height: 150px;
-    width: 250px; */
+  .campus-img {
     height: 10rem;
     width: 15rem;
     padding: 1rem;
@@ -248,13 +293,15 @@ body * {
   #all-campuses-view, .all-students-view{
     height: 100%;
   }
-  .campus-list, .student-list {
+  .campus-list  {
     display: flex;
     flex-flow: row wrap;
     height: 100%;
-    justify-content: stretch;
+    /* justify-content: stretch; */
+    align-items: flex-start;
+    justify-content: baseline;
   }
-  .campus-card, .student-card {
+  .campus-card  {
     width: 48.5%;
     height: fit-content;
     display: flex;
@@ -262,17 +309,88 @@ body * {
     justify-content: center;
 
   }
-  .campus-card h2, .student-card h2 {
+  .campus-card h2 {
     font-size: medium;
   }
-  .campus-card-info, .student-card-info{
+  .campus-card-info {
     display: flex;
     justify-content: center;
+    width: 100%;
   }
-  .campus-card a , .student-card a{
+  .campus-card a {
     width: fit-content;
   }
-  /* allstudentview */
+
+  /* single-campus-view */
+  .single-campus-info {
+    display: flex;
+    flex-flow: column;
+  }
+  .image-with-info {
+    display: flex;
+  }
+  .single-view-img img {
+    height: 100%;
+    width: 100%;
+  }
+  .single-campus-name-bio {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .campus-description {
+    margin: 0;
+  }
+  .tools {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+  .campus-btns {
+    width: 100%;
+    padding: 1rem;
+  }
+  .campus-btns button {
+    width: 10rem;
+    border-radius: 0;
+  }
+  .single-campus-view {
+      height: 100%;
+      display: flex;
+      flex-flow: column;
+  }
+  .single-campus-view section.no-view {
+    height: 100%;
+  }
+  /* all student view */
+  .student-list {
+    list-style: none;
+    display: flex;
+    flex-flow: wrap;
+    height: 100%;
+    padding-left: 0;
+    justify-content: center;
+  }
+
+  .student-card {
+    background-color: rgb(179, 175, 175);
+    margin: 1rem;
+    height: 35%;
+    width: 18%;
+  }
+  .student-img {
+    width: 100%;
+    height: 60%;
+  }
+  section.student-card-info {
+    /* padding: 1rem; */
+    margin-top: 0;
+    height: fit-content;
+  }
+  .student-card-info > a > h2 {
+    margin: 0;
+  }
 
 }
 /* #all-campus-view {
