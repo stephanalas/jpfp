@@ -9,15 +9,16 @@ class AddStudentForm extends Component {
       firstName : '',
       lastName: '',
       email: '',
+      campusId: '',
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
   }
   async onSubmit(ev) {
     ev.preventDefault();
-    const { firstName, lastName, email } = this.state
+    const { firstName, lastName, email, campusId } = this.state
     try {
-      await this.props.create(firstName, lastName, email);
+      await this.props.create(firstName, lastName, email, campusId);
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +27,7 @@ class AddStudentForm extends Component {
     this.setState({[ev.target.name]: ev.target.value})
   }
   render() {
-    const { state: {firstName, lastName, email}, onChange, onSubmit } = this;
+    const { state: {firstName, lastName, email, campusId}, onChange, onSubmit } = this;
     return (
       <main id='add-student-view' className='add-view'>
         <h2>Enter Student Info</h2>
@@ -46,6 +47,11 @@ class AddStudentForm extends Component {
             </label>
             <input name='email'  value={email} onChange={onChange} ></input>
           </section>
+          <section>
+            <label htmlFor={campusId} >Campus Id:
+            </label>
+            <input name='campusId'  value={campusId} onChange={onChange} ></input>
+          </section>
           <button className='add-btn'>Add Student</button>
         </form>
       </main>
@@ -55,6 +61,6 @@ class AddStudentForm extends Component {
 
 export default connect(null, (dispatch, { history }) => {
   return {
-    create: async (firstName, lastName, email) => dispatch(createStudent(firstName, lastName, email, history))
+    create: async (firstName, lastName, email, campusId) => dispatch(createStudent(firstName, lastName, email, campusId, history))
   }
 })(AddStudentForm);

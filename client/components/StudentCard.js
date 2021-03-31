@@ -12,10 +12,10 @@ const StudentCard = ({student, destroy}) => {
           { 
             student.campus ? <span>  
             <Link to={`/campuses/${ student.campus.id }`} >{ student.campus.name }</Link> </span> 
-              : 'Currently not attending a campus'
+              : <p>Currently not attending a campus</p>
           }
         
-        <button onClick={() => destroy(student)} className='delete-btn'>delete</button>
+        {/* <button onClick={() => destroy(student)} className='delete-btn'>delete</button> */}
       </section>
     </li>
   )

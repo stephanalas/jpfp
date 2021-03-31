@@ -18,6 +18,6 @@ const StudentRow = ({student, unregister}) => {
 
 export default connect(null, (dispatch) => {
   return {
-    unregister: (id) => dispatch(unregisterStudent())
+    unregister: (id) => dispatch(unregisterStudent(id))
   }
 })(StudentRow)

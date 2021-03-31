@@ -7,11 +7,11 @@ const Students = ({ students, history, destroy}) => {
 
   if (students.length === 0) {
     return (
-      <main className='no-view'>
+      <section className='no-view'>
         <h1>All Students</h1>
         <p>There are no students registered in the database</p>
         <button className='add-btn' onClick={() => history.push('/students/create')}>Add Student</button>
-      </main>
+      </section>
     )
   }
   return (
