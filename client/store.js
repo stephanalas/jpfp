@@ -134,10 +134,10 @@ export const fetchStudents = () => {
   };
 };
 
-export const createStudent = (firstName, lastName, email, history) => {
+export const createStudent = (firstName, lastName, email, campusId, history) => {
   return async (dispatch) => {
     try {
-      const student = (await axios.post('/api/students/', {firstName, lastName, email})).data;
+      const student = (await axios.post('/api/students/', {firstName, lastName, email, campusId})).data;
       dispatch(_createStudent(student));
       history.push('/students');
       
