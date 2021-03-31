@@ -65,7 +65,18 @@ router.get('/students', async (req, res, next) => {
 
 router.post('/students', async (req, res, next) => {
   try {
-    res.status(201).send(await Student.create(req.body));
+    const { campusId } = req.body;
+    const student = await Student.create(req.body);
+    const campus = await Campus.findByPk(campusId);
+    console.log(req.body)
+    if (campusId) {
+      
+        student.campusId = campus.id;
+        await student.save()
+        await student.reload()
+    }
+    console.log('heyyyy listen!')
+    res.status(201).send(student);
   } catch (error) {
     next(error)
   }
