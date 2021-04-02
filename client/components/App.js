@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AllCampuses from './AllCampuses';
 import { fetchCampusesThunk, fetchStudentsThunk } from '../store';
-import Nav from './Nav'
 import { HashRouter, Switch, Route } from 'react-router-dom';
-import Students from './AllStudents';
-import SingleCampus from './SingleCampus';
-import SingleStudent from './SingleStudent';
-import AddCampusForm from './AddCampusForm';
-import AddStudentForm from './AddStudentForm';
-import UpdateCampus from './UpdateCampus';
-import UpdateStudentForm from './UpdateStudentForm';
+import Nav from './Nav'
+import AllCampuses from './campus/AllCampuses';
+import SingleCampus from './campus/SingleCampus';
+import AddCampusForm from './campus/forms/AddCampusForm';
+import UpdateCampus from './campus/UpdateCampus';
+import Students from './student/AllStudents';
+import SingleStudent from './student/SingleStudent';
+import AddStudentForm from './student/forms/AddStudentForm';
+import UpdateStudentForm from './student/forms/UpdateStudentForm';
 
 class App extends Component {
   componentDidMount() {

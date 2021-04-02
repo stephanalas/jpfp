@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { destroyStudentThunk, updateStudentThunk } from '../store';
-import AssignCampusForm from './AssignCampusForm';
-import CampusCard from './CampusCard'
+import { destroyStudentThunk, updateStudentThunk } from '../../store';
+import AssignCampusForm from './forms/AssignCampusForm';
+import CampusCard from '../campus/CampusCard'
 
 class  SingleStudent extends Component {
   constructor(props) {

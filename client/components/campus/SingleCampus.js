@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { unregisterStudentThunk } from '../store';
-import SmallStudenCard from './SmallStudenCard';
+import { unregisterStudentThunk } from '../../store';
+import SmallStudenCard from '../student/SmallStudenCard';
 const SingleCampus = ({campus, students, history }) => {
 
   return (

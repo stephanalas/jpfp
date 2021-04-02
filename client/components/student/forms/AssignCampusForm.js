@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { registerStudentThunk } from '../store';
+import { registerStudentThunk } from '../../../store';
 
 class AssignCampusForm extends Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { destroyCampusThunk, fetchCampusesThunk} from '../store';
+import { destroyCampusThunk, fetchCampusesThunk} from '../../store';
 import CampusCard from './CampusCard';
 
 

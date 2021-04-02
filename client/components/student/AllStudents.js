@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { destroyStudentThunk } from '../store';
+import { destroyStudentThunk } from '../../store';
 import StudentCard from './StudentCard';
 
 const Students = ({ students, history, destroy}) => {

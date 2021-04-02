@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { unregisterStudentThunk } from '../store';
+import { unregisterStudentThunk } from '../../store';
 const StudentRow = ({student, unregister}) => {
   return (
     <li className='student-row'>
