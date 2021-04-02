@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCampusesThunk, fetchStudentsThunk } from '../store';
+import { fetchCampusesThunk, fetchStudentsThunk } from '../store/store';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import Nav from './Nav'
 import AllCampuses from './campus/AllCampuses';
