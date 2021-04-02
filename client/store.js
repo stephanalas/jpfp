@@ -6,13 +6,16 @@ import axios from 'axios';
 // action constants
 const SET_CAMPUSES = 'SET_CAMPUSES';
 const SET_STUDENTS = 'SET_STUDENTS';
+const SET_CAMPUS = 'SET_CAMPUS'
 const CREATE_CAMPUS = 'CREATE_CAMPUS';
 const CREATE_STUDENT = 'CREATE_STUDENT';
 const DESTROY_CAMPUS = 'DESTROY_CAMPUS';
 const DESTROY_STUDENT = 'DESTROY_STUDENT';
 const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
 const UPDATE_STUDENT = 'UPDATE_STUDENT';
-const UNREGISTER_STUDENT = 'UNREGISTER_STUDENT'
+const REGISTER_STUDENT = 'REGISTER_STUDENT';
+const UNREGISTER_STUDENT = 'UNREGISTER_STUDENT';
+
 // action creators
 const setCampuses = (campuses) => {
   return {
@@ -20,19 +23,25 @@ const setCampuses = (campuses) => {
     campuses
   };
 };
-const _createCampus = (campus) => {
+const setCampus = (campus) => {
+  return {
+    type: SET_CAMPUS,
+    campus
+  };
+};
+const createCampus = (campus) => {
   return {
     type: CREATE_CAMPUS,
     campus
   };
 };
-const _destroyCampus = (campus) => {
+const destroyCampus = (campus) => {
   return {
     type: DESTROY_CAMPUS,
     campus
   };
 };
-const _updateCampus = (campus) => {
+const updateCampus = (campus) => {
   return {
     type: UPDATE_CAMPUS,
     campus
@@ -44,32 +53,55 @@ const setStudents = (students) => {
     students
   };
 };
-const _createStudent = (student) => {
+const createStudent = (student) => {
   return {
     type: CREATE_STUDENT,
     student
   };
 };
-const _updateStudent = (student) => {
+const updateStudent = (student) => {
   return {
     type: UPDATE_STUDENT,
     student
   }
 }
-const _destroyStudent = (student) => {
+const destroyStudent = (student) => {
   return {
     type: DESTROY_STUDENT,
     student
   };
 };
-const _unregisterStudent = (student) => {
+const registerStudent = (student, campus) => {
+  return {
+    type: REGISTER_STUDENT,
+    student,
+    campus
+  }
+}
+const unregisterStudent = (student,campus) => {
   return {
     type: UNREGISTER_STUDENT,
-    student
+    student,
+    campus
   }
 }
 // thunks
-export const fetchCampuses = () => {
+
+
+export const fetchCampusThunk = (campusId) => {
+  return async (dispatch) => {
+    try {
+      const campus = (await axios.get(`/api/campuses/${campusId}`)).data
+      dispatch(setCampus(campus));
+
+    } catch (error) {
+      console.log('called from fetchCampus thunk');
+      console.log(error);
+    }
+  };
+};
+
+export const fetchCampusesThunk = () => {
   return async (dispatch) => {
     try {
       const campuses = (await axios.get('/api/campuses')).data
@@ -82,11 +114,11 @@ export const fetchCampuses = () => {
   };
 };
 
-export const createCampus = (name, address, history) => {
+export const createCampusThunk = (name, address, history) => {
   return async (dispatch) => {
     try {
       const campus = (await axios.post('/api/campuses', {name, address} )).data;
-      dispatch(_createCampus(campus));
+      dispatch(createCampus(campus));
       history.push('/campuses');
     } catch (error) {
       console.log('called from createCampus thunk');
@@ -94,12 +126,12 @@ export const createCampus = (name, address, history) => {
     }
   };
 };
-export const updateCampus = (id, data, history) => {
+export const updateCampusThunk = (id, data, history) => {
   return async (dispatch) => {
     try {
 
       const campus = (await axios.put(`/api/campuses/${id}`, data)).data;
-      dispatch(_updateCampus(campus))
+      dispatch(updateCampus(campus))
       history.push('/campuses'); 
     } catch (error) {
       console.log('called from updateCampus thunk');
@@ -108,10 +140,10 @@ export const updateCampus = (id, data, history) => {
   }
 }
 
-export const destroyCampus = (campus) => {
+export const destroyCampusThunk = (campus) => {
   return async (dispatch) => {
     try {
-      dispatch(_destroyCampus(campus));
+      dispatch(destroyCampus(campus));
       await axios.delete(`/api/campuses/${campus.id}`)
     } catch (error) {
       console.log('called from destroyCampus thunk')
@@ -121,7 +153,7 @@ export const destroyCampus = (campus) => {
   }
 };
 
-export const fetchStudents = () => {
+export const fetchStudentsThunk = () => {
   return async (dispatch) => {
     try {
       const students = (await axios.get('/api/students')).data;
@@ -134,11 +166,11 @@ export const fetchStudents = () => {
   };
 };
 
-export const createStudent = (firstName, lastName, email, campusId, history) => {
+export const createStudentThunk = (firstName, lastName, email, campusId, history) => {
   return async (dispatch) => {
     try {
       const student = (await axios.post('/api/students/', {firstName, lastName, email, campusId})).data;
-      dispatch(_createStudent(student));
+      dispatch(createStudent(student));
       history.push('/students');
       
     } catch (error) {
@@ -147,11 +179,11 @@ export const createStudent = (firstName, lastName, email, campusId, history) => 
     }
   };
 };
-export const updateStudent = (id, data, history) => {
+export const updateStudentThunk = (id, data, history) => {
   return async (dispatch) => {
     try {
       const student = (await axios.put(`/api/students/${id}`, data)).data
-      dispatch(_updateStudent(student));
+      dispatch(updateStudent(student));
       history.push(`/students/${student.id}`);
     } catch (error) {
       console.log('called from updateStudent thunk');
@@ -159,11 +191,25 @@ export const updateStudent = (id, data, history) => {
     }
   }
 }
-export const unregisterStudent = (id) => {
+export const registerStudentThunk = (id, campusId) => {
   return async (dispatch) => {
     try {
-      const student = (await axios.put(`/api/students/${id}`)).data
-      dispatch(_unregisterStudent(student))
+      const student = (await axios.put(`/api/students/${id}`, { campusId : campusId})).data;
+      const campus = (await axios.get(`/api/campuses/${campusId}`)).data;
+      dispatch(registerStudent(student,campus))
+    } catch (error) {
+      console.log('called from registerStudent thunk')
+      console.log(error);
+    }
+  }
+}
+
+export const unregisterStudentThunk = (id, campusId) => {
+  return async (dispatch) => {
+    try {
+      const student = (await axios.put(`/api/students/${id}`)).data;
+      const campus = (await axios.get(`/api/campuses/${campusId}`)).data;
+      dispatch(unregisterStudent(student, campus))
     } catch (error) {
       console.log('called from unregisterStudent thunk')
       console.log(error);
@@ -171,10 +217,10 @@ export const unregisterStudent = (id) => {
   }
 }
 
-export const destroyStudent = (student) => {
+export const destroyStudentThunk = (student) => {
   return async (dispatch) => {
     try {
-      dispatch(_destroyStudent(student));
+      dispatch(destroyStudent(student));
       await axios.delete(`/api/students/${student.id}`)
     } catch (error) {
       console.log('called from destroyStudent thunk')
@@ -193,7 +239,7 @@ const campusesReducer = (state = [], action) => {
     state = [...state, action.campus];
   } else if (type === DESTROY_CAMPUS) {
     state = state.filter(campus => campus.id !== action.campus.id);
-  } else if (type === UPDATE_CAMPUS) {
+  } else if (type === UPDATE_CAMPUS || type===UNREGISTER_STUDENT || type === REGISTER_STUDENT) {
     state = state.filter(campus => campus.id !== action.campus.id).concat([action.campus]);
   }
   return state;
@@ -207,15 +253,22 @@ const studentsReducer = (state = [], action) => {
     return [...state, action.student];
   } else if (type === DESTROY_STUDENT) {
     state = state.filter(student => student.id !== action.student.id)
-  } else if (type === UNREGISTER_STUDENT || type === UPDATE_STUDENT) {
+  } else if (type === UNREGISTER_STUDENT || type === UPDATE_STUDENT || type=== REGISTER_STUDENT) {
     state = state.filter(student => student.id !== action.student.id).concat([action.student])
   } 
   return state
 };
 
+
 const reducer = combineReducers({
   campuses: campusesReducer,
   students: studentsReducer,
+  selectedCampus: (state={}, action) => {
+    if (action.type === SET_CAMPUS) {
+      state = action.campus;
+    }
+    return state;
+  }
 })
 
 export default createStore(reducer, applyMiddleware(thunk, loggingMiddleware));
