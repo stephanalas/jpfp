@@ -43,10 +43,13 @@ router.post('/campuses', async (req, res, next) => {
 })
 router.put('/campuses/:id', async (req, res, next) => {
   try {
-    const { name, address } = req.body;
+    const { name, address, imageUrl, description } = req.body;
+    console.log(req.body)
     const campus = await Campus.findByPk(req.params.id, { include: [Student]});
     campus.name = name;
     campus.address = address;
+    campus.imageUrl = imageUrl;
+    campus.description = description;
     await campus.save();
     await campus.reload();
     res.status(202).send(campus);
@@ -75,7 +78,6 @@ router.post('/students', async (req, res, next) => {
         await student.save()
         await student.reload()
     }
-    console.log('heyyyy listen!')
     res.status(201).send(student);
   } catch (error) {
     next(error)
@@ -95,6 +97,8 @@ router.put('/students/:id', async (req, res, next) => {
     const student = await Student.findByPk(req.params.id, { include: [Campus]});
     if (Object.keys(req.body).length === 0) {
       student.campusId = null;
+    } else if (Object.keys(req.body).includes('campusId')) {
+      student.campusId = req.body.campusId;
     } else {
       const { firstName, lastName, email} = req.body;
       student.firstName = firstName;
@@ -106,7 +110,7 @@ router.put('/students/:id', async (req, res, next) => {
     await student.reload();
     res.status(202).send(student);
   } catch (error) {
-    console.log(error)
+    next(error)
   }
 })
 router.delete('/students/:id', async (req, res, next) => {

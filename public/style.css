@@ -275,14 +275,34 @@ body * {
   padding: 0;
   list-style: none;
 }
+.campus-view-sub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem;
+}
+  /* edit campus */
+  #root .update-view {
+    height: 100%;
+  }
+  #root .update-view form {
+    height: 100%;
+  }
+  .description-section {
+    height: 30%;
+  }
+  .description-section input {
+    height: 100%;
+  }
+
 
 @media (min-width: 753px) {
   .add-view section {
     width: 50%;
   }
-  #update-campus-view section {
+  /* #update-campus-view section {
     width: 50%;
-  }
+  } */
 }
 @media (min-width:777px) {
   /* allcampusview */
@@ -394,10 +414,70 @@ body * {
   .student-card-info > a > h2 {
     margin: 0;
   }
-  .students-on-campus-list {
+  .students-on-campus-list{
     padding: 0;
     list-style: none;
     display: flex;
     flex-flow: wrap;
+    width: 100%;
+  }
+  .campus-view-sub-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* edit campus */
+  #root .update-view {
+    height: 100%;
+  }
+  #root .update-view form {
+    height: 45%;
+  }
+  .description-section {
+    height: 30%;
+  }
+  .description-section textarea {
+    height: 100%;
+  }
+  .update-view section {
+    width: 100%;
+  }
+  .students-on-campus-list .student-row {
+    width: 100%;
+  }
+  .edit-students-on-campus {
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+  }
+  .student-row {
+    width: 80%;
+    display: flex;
+    background-color:  rgb(179, 175, 175);
+    margin-right: 1rem;
+    padding-right: 2rem;
+    margin: 1rem
+  }
+  .student-row img {
+    width: 30%;
+    height: 100%;
+  }
+  .student-row > div {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    padding: 2rem
+  }
+  .student-row-btn {
+    display: flex;
+    align-items: flex-end;
+  }
+  .student-row-name > a {
+    padding-top: 2rem;
+    font-size: larger;
   }
 }
