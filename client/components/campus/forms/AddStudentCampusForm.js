@@ -14,9 +14,9 @@ class AddStudentCampusForm extends Component {
   handleChange(ev) {
     this.setState({ value: ev.target.value})
   }
-  async onSubmit(ev) {
+  onSubmit(ev) {
     ev.preventDefault();
-    await this.props.register(this.state.value, this.props.campus.id)
+    this.props.register(this.state.value, this.props.campus.id)
 
   }
   render() {

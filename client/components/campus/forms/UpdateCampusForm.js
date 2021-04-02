@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
 import thunks from '../../../store/thunks'
+
 class UpdateCampusForm extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +16,6 @@ class UpdateCampusForm extends Component {
   }
   componentDidMount() {
     const { campus } = this.props;
-    console.log(campus)
     const newState = {
       name: campus.name,
       address: campus.address,
@@ -24,22 +24,19 @@ class UpdateCampusForm extends Component {
     }
     this.setState(newState);
   }
-  async onSubmit(ev) {
+  onSubmit(ev) {
     ev.preventDefault();
     const { name, address, imageUrl, description } = this.state;
-    try {
-      const data = {
+    const data = {
         name,
         address,
         imageUrl,
         description
-      }
-      await this.props.update(this.props.campus.id, data, this.props.history);
-      console.log('submitted');
-    } catch (error) {
-      console.log(error);
     }
+    this.props.update(this.props.campus.id, data, this.props.history);
+    console.log('submitted');
   }
+
   onChange(ev) {
     this.setState({[ev.target.name] : ev.target.value})
     console.log(ev.target.name, this.state[ev.target.name])

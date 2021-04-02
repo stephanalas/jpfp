@@ -12,17 +12,15 @@ class AddCampusForm extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
   }
-  async onSubmit(ev) {
+  onSubmit(ev) {
     ev.preventDefault();
-    try {
-      await this.props.create(this.state.name, this.state.address);
-    } catch (error) {
-      console.log(error);
-    }
+    this.props.create(this.state.name, this.state.address);  
   }
+
   onChange(ev) {
     this.setState({[ev.target.name] : ev.target.value})
   }
+  
   render() {
     const { state: {name, address}, onChange, onSubmit } = this;
     return (

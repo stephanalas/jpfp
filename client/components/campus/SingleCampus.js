@@ -53,6 +53,6 @@ export default connect((state,otherProps) => {
 }, (dispatch) => {
   const { unregisterStudent } = thunks.student;
   return {
-    unregister: (id) => dispatch(unregisterStudentThunk(id))
+    unregister: (id) => dispatch(unregisterStudent(id))
   }
 })(SingleCampus)

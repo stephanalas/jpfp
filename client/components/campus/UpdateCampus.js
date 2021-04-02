@@ -4,27 +4,22 @@ import UpdateCampusForm from './forms/UpdateCampusForm';
 import StudentRow from '../student/StudentRow';
 import AddStudentCampusForm from './forms/AddStudentCampusForm';
 
-class UpdateCampus extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
+const UpdateCampus = ({campus, history, students }) => {
     return (
-      <main className='update-view' id='update-campus-view'>
-        
+      <main className='update-view' id='update-campus-view'>      
         <h1>Update campus</h1>
-        <UpdateCampusForm campus={this.props.campus} history={this.props.history} />
+        <UpdateCampusForm campus={campus} history={history} />
         <h2>Students on Campus</h2>
-        <AddStudentCampusForm students={this.props.students} campus={this.props.campus} />
+        <AddStudentCampusForm students={students} campus={campus} />
         <ul className='edit-students-on-campus'>
             {
-             Object.keys(this.props.campus).includes('students') ? this.props.campus.students.map(student => <StudentRow key={student.id * 10} student={student} />) : 'No Students '
+             Object.keys(campus).includes('students') ? campus.students.map(student => <StudentRow key={student.id * 10} student={student} />) : 'No Students '
             }
         </ul>
       </main>
-    )
-  }
+  )
 }
+
 
 export default connect((state, { match, history } ) => {
   

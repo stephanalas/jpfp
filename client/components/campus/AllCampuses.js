@@ -15,12 +15,14 @@ class AllCampuses extends Component {
     this.props.load();
   }
 
+  create() {
+    this.props.history.push('/campuses/create');
+  }
+
   render() {
 
-    const { history, campuses, destroy } = this.props
-    const create = () => {
-      history.push('/campuses/create');
-    };
+    const { campuses, destroy } = this.props;
+
     if (campuses.length === 0) {
       return (
         <main className='no-view'>
@@ -34,7 +36,7 @@ class AllCampuses extends Component {
       <main id='all-campuses-view'>
         <div className='all-campus-header'>
           <h1>All Campuses</h1>
-          <button className='add-btn' onClick={create}>Add Campus</button>
+          <button className='add-btn' onClick={this.create}>Add Campus</button>
         </div>
        
         <ul className='campus-list'>
