@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { destroyStudentThunk, updateStudentThunk } from '../../store/store';
+import thunks from '../../store/thunks';
 import AssignCampusForm from './forms/AssignCampusForm';
 import CampusCard from '../campus/CampusCard'
 
@@ -74,8 +74,9 @@ export default connect((state,otherProps) => {
     history
   }
 }, (dispatch, { history } ) => {
+  const { updateStudent, destroyStudent } = thunks.student;
     return {
-      update: (id, data) => dispatch(updateStudentThunk(id, data, history)),
-      destroy: (student) => dispatch(destroyStudentThunk(student, history))
+      update: (id, data) => dispatch(updateStudent(id, data, history)),
+      destroy: (student) => dispatch(destroyStudent(student, history))
     }
 })(SingleStudent)

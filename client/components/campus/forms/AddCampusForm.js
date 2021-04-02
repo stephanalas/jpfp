@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createCampusThunk } from '../../../store/store';
+import thunks from '../../../store/thunks';
 
 class AddCampusForm extends Component {
   constructor() {
@@ -49,7 +49,8 @@ class AddCampusForm extends Component {
 }
 
 export default connect(null, (dispatch, { history }) => {
+  const { createCampus } = thunks.campus
   return {
-    create: (name, address) => dispatch(createCampusThunk(name, address, history))
+    create: (name, address) => dispatch(createCampus(name, address, history))
   }
 })(AddCampusForm);

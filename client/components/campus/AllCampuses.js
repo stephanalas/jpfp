@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { destroyCampusThunk, fetchCampusesThunk} from '../../store/store';
+import thunks from '../../store/thunks/index'
 import CampusCard from './CampusCard';
 
 
@@ -48,12 +48,13 @@ class AllCampuses extends Component {
 }
 
 export default connect(({campuses}) => ({campuses}), (dispatch) => {
+  const { destroyCampus, fetchCampuses } = thunks.campus 
   return {
     load : () => {
-      dispatch(fetchCampusesThunk())
+      dispatch(fetchCampuses())
     },
     destroy: (campus) => {
-      dispatch(destroyCampusThunk(campus));
+      dispatch(destroyCampus(campus));
     }
 
   }

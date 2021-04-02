@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCampusThunk, registerStudentThunk, updateCampusThunk } from '../../store/store';
 import UpdateCampusForm from './forms/UpdateCampusForm';
 import StudentRow from '../student/StudentRow';
 import AddStudentCampusForm from './forms/AddStudentCampusForm';
@@ -35,11 +34,5 @@ export default connect((state, { match, history } ) => {
     campus,
     students,
     history
-  }
-}, (dispatch, { history }) => {
-  return {
-    update: (campus, data) => dispatch(updateCampusThunk(campus, data, history)),
-    load: (campus) => dispatch(fetchCampusThunk(campus.id)),
-    addToCampus: (id, campusId) => dispatch(registerStudentThunk(id, campusId))
   }
 })(UpdateCampus);

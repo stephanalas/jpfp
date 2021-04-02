@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
-import { unregisterStudentThunk } from '../../store/store';
+import thunks from '../../store/thunks';
 const StudentRow = ({student, unregister}) => {
   return (
     <li className='student-row'>
@@ -19,7 +19,8 @@ const StudentRow = ({student, unregister}) => {
 }
 
 export default connect(null, (dispatch) => {
+  const { unregisterStudent } = thunks.student;
   return {
-    unregister: (id, campusId) => dispatch(unregisterStudentThunk(id, campusId))
+    unregister: (id, campusId) => dispatch(unregisterStudent(id, campusId))
   }
 })(StudentRow)

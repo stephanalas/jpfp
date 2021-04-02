@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { unregisterStudentThunk } from '../../store/store';
+import thunks from '../../store/thunks'
 import SmallStudenCard from '../student/SmallStudenCard';
 const SingleCampus = ({campus, students, history }) => {
 
@@ -39,7 +39,7 @@ const SingleCampus = ({campus, students, history }) => {
     </main>
     
   )
-} 
+}
 
 export default connect((state,otherProps) => {
   const campus = state.campuses.find(campus => campus.id === otherProps.match.params.id*1) || {};
@@ -51,6 +51,7 @@ export default connect((state,otherProps) => {
     history
   }
 }, (dispatch) => {
+  const { unregisterStudent } = thunks.student;
   return {
     unregister: (id) => dispatch(unregisterStudentThunk(id))
   }

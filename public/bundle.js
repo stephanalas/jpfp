@@ -1948,7 +1948,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./client/store.js");
+/* harmony import */ var _store_thunks_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/thunks/index */ "./client/store/thunks/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
 /* harmony import */ var _Nav__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Nav */ "./client/components/Nav.js");
@@ -2021,10 +2021,14 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(state => state, dispatch => {
+  const {
+    campus,
+    student
+  } = _store_thunks_index__WEBPACK_IMPORTED_MODULE_2__.default;
   return {
     load: () => {
-      dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.fetchCampusesThunk)());
-      dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.fetchStudentsThunk)());
+      dispatch(campus.fetchCampuses());
+      dispatch(student.fetchStudents());
     }
   };
 })(App));
@@ -2073,7 +2077,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store */ "./client/store.js");
+/* harmony import */ var _store_thunks_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/thunks/index */ "./client/store/thunks/index.js");
 /* harmony import */ var _CampusCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CampusCard */ "./client/components/campus/CampusCard.js");
 
 
@@ -2135,12 +2139,16 @@ class AllCampuses extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
 }) => ({
   campuses
 }), dispatch => {
+  const {
+    destroyCampus,
+    fetchCampuses
+  } = _store_thunks_index__WEBPACK_IMPORTED_MODULE_2__.default.campus;
   return {
     load: () => {
-      dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.fetchCampusesThunk)());
+      dispatch(fetchCampuses());
     },
     destroy: campus => {
-      dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.destroyCampusThunk)(campus));
+      dispatch(destroyCampus(campus));
     }
   };
 })(AllCampuses));
@@ -2208,7 +2216,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store */ "./client/store.js");
+/* harmony import */ var _store_thunks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/thunks */ "./client/store/thunks/index.js");
 /* harmony import */ var _student_SmallStudenCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../student/SmallStudenCard */ "./client/components/student/SmallStudenCard.js");
 
 
@@ -2270,8 +2278,11 @@ const SingleCampus = ({
     history
   };
 }, dispatch => {
+  const {
+    unregisterStudent
+  } = _store_thunks__WEBPACK_IMPORTED_MODULE_2__.default.student;
   return {
-    unregister: id => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.unregisterStudentThunk)(id))
+    unregister: id => dispatch(unregisterStudentThunk(id))
   };
 })(SingleCampus));
 
@@ -2290,11 +2301,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store */ "./client/store.js");
-/* harmony import */ var _forms_UpdateCampusForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./forms/UpdateCampusForm */ "./client/components/campus/forms/UpdateCampusForm.js");
-/* harmony import */ var _student_StudentRow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../student/StudentRow */ "./client/components/student/StudentRow.js");
-/* harmony import */ var _forms_AddStudentCampusForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./forms/AddStudentCampusForm */ "./client/components/campus/forms/AddStudentCampusForm.js");
-
+/* harmony import */ var _forms_UpdateCampusForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./forms/UpdateCampusForm */ "./client/components/campus/forms/UpdateCampusForm.js");
+/* harmony import */ var _student_StudentRow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../student/StudentRow */ "./client/components/student/StudentRow.js");
+/* harmony import */ var _forms_AddStudentCampusForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./forms/AddStudentCampusForm */ "./client/components/campus/forms/AddStudentCampusForm.js");
 
 
 
@@ -2310,15 +2319,15 @@ class UpdateCampus extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
       className: "update-view",
       id: "update-campus-view"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Update campus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_forms_UpdateCampusForm__WEBPACK_IMPORTED_MODULE_3__.default, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Update campus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_forms_UpdateCampusForm__WEBPACK_IMPORTED_MODULE_2__.default, {
       campus: this.props.campus,
       history: this.props.history
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Students on Campus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_forms_AddStudentCampusForm__WEBPACK_IMPORTED_MODULE_5__.default, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Students on Campus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_forms_AddStudentCampusForm__WEBPACK_IMPORTED_MODULE_4__.default, {
       students: this.props.students,
       campus: this.props.campus
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
       className: "edit-students-on-campus"
-    }, Object.keys(this.props.campus).includes('students') ? this.props.campus.students.map(student => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_student_StudentRow__WEBPACK_IMPORTED_MODULE_4__.default, {
+    }, Object.keys(this.props.campus).includes('students') ? this.props.campus.students.map(student => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_student_StudentRow__WEBPACK_IMPORTED_MODULE_3__.default, {
       key: student.id * 10,
       student: student
     })) : 'No Students '));
@@ -2337,14 +2346,6 @@ class UpdateCampus extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     students,
     history
   };
-}, (dispatch, {
-  history
-}) => {
-  return {
-    update: (campus, data) => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.updateCampusThunk)(campus, data, history)),
-    load: campus => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.fetchCampusThunk)(campus.id)),
-    addToCampus: (id, campusId) => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.registerStudentThunk)(id, campusId))
-  };
 })(UpdateCampus));
 
 /***/ }),
@@ -2362,7 +2363,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../store */ "./client/store.js");
+/* harmony import */ var _store_thunks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../store/thunks */ "./client/store/thunks/index.js");
 
 
 
@@ -2432,8 +2433,11 @@ class AddCampusForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(null, (dispatch, {
   history
 }) => {
+  const {
+    createCampus
+  } = _store_thunks__WEBPACK_IMPORTED_MODULE_2__.default.campus;
   return {
-    create: (name, address) => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.createCampusThunk)(name, address, history))
+    create: (name, address) => dispatch(createCampus(name, address, history))
   };
 })(AddCampusForm));
 
@@ -2452,7 +2456,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../store */ "./client/store.js");
+/* harmony import */ var _store_thunks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../store/thunks */ "./client/store/thunks/index.js");
 
 
 
@@ -2496,8 +2500,11 @@ class AddStudentCampusForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component 
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(null, dispatch => {
+  const {
+    registerStudent
+  } = _store_thunks__WEBPACK_IMPORTED_MODULE_2__.default.student;
   return {
-    register: (id, campusId) => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.registerStudentThunk)(id, campusId))
+    register: (id, campusId) => dispatch(registerStudent(id, campusId))
   };
 })(AddStudentCampusForm));
 
@@ -2516,7 +2523,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../store */ "./client/store.js");
+/* harmony import */ var _store_thunks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../store/thunks */ "./client/store/thunks/index.js");
 
 
 
@@ -2626,8 +2633,11 @@ class UpdateCampusForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(null, dispatch => {
+  const {
+    updateCampus
+  } = _store_thunks__WEBPACK_IMPORTED_MODULE_2__.default.campus;
   return {
-    update: (campus, data, history) => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.updateCampusThunk)(campus, data, history))
+    update: (campus, data, history) => dispatch(updateCampus(campus, data, history))
   };
 })(UpdateCampusForm));
 
@@ -2646,7 +2656,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store */ "./client/store.js");
+/* harmony import */ var _store_thunks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/thunks */ "./client/store/thunks/index.js");
 /* harmony import */ var _StudentCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./StudentCard */ "./client/components/student/StudentCard.js");
 
 
@@ -2684,9 +2694,12 @@ const Students = ({
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(state => state, dispatch => {
+  const {
+    destroyStudent
+  } = _store_thunks__WEBPACK_IMPORTED_MODULE_2__.default.student;
   return {
     destroy: student => {
-      dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.destroyStudentThunk)(student));
+      dispatch(destroyStudent(student));
     }
   };
 })(Students));
@@ -2706,7 +2719,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store */ "./client/store.js");
+/* harmony import */ var _store_thunks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/thunks */ "./client/store/thunks/index.js");
 /* harmony import */ var _forms_AssignCampusForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./forms/AssignCampusForm */ "./client/components/student/forms/AssignCampusForm.js");
 /* harmony import */ var _campus_CampusCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../campus/CampusCard */ "./client/components/campus/CampusCard.js");
 
@@ -2802,9 +2815,13 @@ class SingleStudent extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
 }, (dispatch, {
   history
 }) => {
+  const {
+    updateStudent,
+    destroyStudent
+  } = _store_thunks__WEBPACK_IMPORTED_MODULE_2__.default.student;
   return {
-    update: (id, data) => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.updateStudentThunk)(id, data, history)),
-    destroy: student => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.destroyStudentThunk)(student, history))
+    update: (id, data) => dispatch(updateStudent(id, data, history)),
+    destroy: student => dispatch(destroyStudent(student, history))
   };
 })(SingleStudent));
 
@@ -2903,7 +2920,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store */ "./client/store.js");
+/* harmony import */ var _store_thunks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../store/thunks */ "./client/store/thunks/index.js");
 
 
 
@@ -2931,8 +2948,11 @@ const StudentRow = ({
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(null, dispatch => {
+  const {
+    unregisterStudent
+  } = _store_thunks__WEBPACK_IMPORTED_MODULE_2__.default.student;
   return {
-    unregister: (id, campusId) => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.unregisterStudentThunk)(id, campusId))
+    unregister: (id, campusId) => dispatch(unregisterStudent(id, campusId))
   };
 })(StudentRow));
 
@@ -2951,7 +2971,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../store */ "./client/store.js");
+/* harmony import */ var _store_thunks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../store/thunks */ "./client/store/thunks/index.js");
 
 
 
@@ -3033,8 +3053,11 @@ class AddStudentForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,react_redux__WEBPACK_IMPORTED_MODULE_1__.connect)(null, (dispatch, {
   history
 }) => {
+  const {
+    createStudent
+  } = _store_thunks__WEBPACK_IMPORTED_MODULE_2__.default.student;
   return {
-    create: async (firstName, lastName, email) => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.createStudentThunk)(firstName, lastName, email, history))
+    create: async (firstName, lastName, email) => dispatch(createStudent(firstName, lastName, email, history))
   };
 })(AddStudentForm));
 
@@ -3053,7 +3076,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../store */ "./client/store.js");
+/* harmony import */ var _store_thunks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../store/thunks */ "./client/store/thunks/index.js");
 
 
 
@@ -3105,8 +3128,11 @@ class AssignCampusForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     campuses
   };
 }, dispatch => {
+  const {
+    registerStudent
+  } = _store_thunks__WEBPACK_IMPORTED_MODULE_2__.default.student;
   return {
-    register: (id, campusId) => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.registerStudentThunk)(id, campusId))
+    register: (id, campusId) => dispatch(registerStudent(id, campusId))
   };
 })(AssignCampusForm));
 
@@ -3125,7 +3151,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../store */ "./client/store.js");
+/* harmony import */ var _store_thunks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../store/thunks */ "./client/store/thunks/index.js");
 
 
 
@@ -3230,46 +3256,27 @@ class UpdateStudentForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
 }, (dispatch, {
   history
 }) => {
+  const {
+    updateStudent
+  } = _store_thunks__WEBPACK_IMPORTED_MODULE_2__.default.student;
   return {
-    updateStudent: (id, data) => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.updateStudentThunk)(id, data, history))
+    updateStudent: (id, data) => dispatch(updateStudent(id, data, history))
   };
 })(UpdateStudentForm));
 
 /***/ }),
 
-/***/ "./client/store.js":
-/*!*************************!*\
-  !*** ./client/store.js ***!
-  \*************************/
+/***/ "./client/store/actions/constants.js":
+/*!*******************************************!*\
+  !*** ./client/store/actions/constants.js ***!
+  \*******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "fetchCampusThunk": () => (/* binding */ fetchCampusThunk),
-/* harmony export */   "fetchCampusesThunk": () => (/* binding */ fetchCampusesThunk),
-/* harmony export */   "createCampusThunk": () => (/* binding */ createCampusThunk),
-/* harmony export */   "updateCampusThunk": () => (/* binding */ updateCampusThunk),
-/* harmony export */   "destroyCampusThunk": () => (/* binding */ destroyCampusThunk),
-/* harmony export */   "fetchStudentsThunk": () => (/* binding */ fetchStudentsThunk),
-/* harmony export */   "createStudentThunk": () => (/* binding */ createStudentThunk),
-/* harmony export */   "updateStudentThunk": () => (/* binding */ updateStudentThunk),
-/* harmony export */   "registerStudentThunk": () => (/* binding */ registerStudentThunk),
-/* harmony export */   "unregisterStudentThunk": () => (/* binding */ unregisterStudentThunk),
-/* harmony export */   "destroyStudentThunk": () => (/* binding */ destroyStudentThunk),
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
-/* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_logger__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
-
-
-
- // action constants
-
 const SET_CAMPUSES = 'SET_CAMPUSES';
 const SET_STUDENTS = 'SET_STUDENTS';
 const SET_CAMPUS = 'SET_CAMPUS';
@@ -3280,74 +3287,104 @@ const DESTROY_STUDENT = 'DESTROY_STUDENT';
 const UPDATE_CAMPUS = 'UPDATE_CAMPUS';
 const UPDATE_STUDENT = 'UPDATE_STUDENT';
 const REGISTER_STUDENT = 'REGISTER_STUDENT';
-const UNREGISTER_STUDENT = 'UNREGISTER_STUDENT'; // action creators
+const UNREGISTER_STUDENT = 'UNREGISTER_STUDENT';
+const CONSTANTS = {
+  SET_CAMPUS,
+  SET_CAMPUSES,
+  SET_STUDENTS,
+  CREATE_CAMPUS,
+  CREATE_STUDENT,
+  DESTROY_CAMPUS,
+  DESTROY_STUDENT,
+  UPDATE_CAMPUS,
+  UPDATE_STUDENT,
+  REGISTER_STUDENT,
+  UNREGISTER_STUDENT
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CONSTANTS);
+
+/***/ }),
+
+/***/ "./client/store/actions/creators.js":
+/*!******************************************!*\
+  !*** ./client/store/actions/creators.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./client/store/actions/constants.js");
+
 
 const setCampuses = campuses => {
   return {
-    type: SET_CAMPUSES,
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__.default.SET_CAMPUSES,
     campuses
   };
 };
 
 const setCampus = campus => {
   return {
-    type: SET_CAMPUS,
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__.default.SET_CAMPUS,
     campus
   };
 };
 
 const createCampus = campus => {
   return {
-    type: CREATE_CAMPUS,
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__.default.CREATE_CAMPUS,
     campus
   };
 };
 
 const destroyCampus = campus => {
   return {
-    type: DESTROY_CAMPUS,
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__.default.DESTROY_CAMPUS,
     campus
   };
 };
 
 const updateCampus = campus => {
   return {
-    type: UPDATE_CAMPUS,
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__.default.UPDATE_CAMPUS,
     campus
   };
 };
 
 const setStudents = students => {
   return {
-    type: SET_STUDENTS,
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__.default.SET_STUDENTS,
     students
   };
 };
 
 const createStudent = student => {
   return {
-    type: CREATE_STUDENT,
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__.default.CREATE_STUDENT,
     student
   };
 };
 
 const updateStudent = student => {
   return {
-    type: UPDATE_STUDENT,
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__.default.UPDATE_STUDENT,
     student
   };
 };
 
 const destroyStudent = student => {
   return {
-    type: DESTROY_STUDENT,
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__.default.DESTROY_STUDENT,
     student
   };
 };
 
 const registerStudent = (student, campus) => {
   return {
-    type: REGISTER_STUDENT,
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__.default.REGISTER_STUDENT,
     student,
     campus
   };
@@ -3355,93 +3392,305 @@ const registerStudent = (student, campus) => {
 
 const unregisterStudent = (student, campus) => {
   return {
-    type: UNREGISTER_STUDENT,
+    type: _constants__WEBPACK_IMPORTED_MODULE_0__.default.UNREGISTER_STUDENT,
     student,
     campus
   };
-}; // thunks
+};
+
+const CREATORS = {
+  setCampus,
+  setCampuses,
+  setStudents,
+  createCampus,
+  createStudent,
+  destroyCampus,
+  destroyStudent,
+  updateCampus,
+  updateStudent,
+  unregisterStudent,
+  registerStudent
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CREATORS);
+
+/***/ }),
+
+/***/ "./client/store/index.js":
+/*!*******************************!*\
+  !*** ./client/store/index.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux-logger */ "./node_modules/redux-logger/dist/redux-logger.js");
+/* harmony import */ var redux_logger__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux_logger__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var redux_thunk__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! redux-thunk */ "./node_modules/redux-thunk/es/index.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./reducers */ "./client/store/reducers/index.js");
 
 
-const fetchCampusThunk = campusId => {
+
+
+const store = (0,redux__WEBPACK_IMPORTED_MODULE_3__.createStore)(_reducers__WEBPACK_IMPORTED_MODULE_2__.default, (0,redux__WEBPACK_IMPORTED_MODULE_3__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__.default, (redux_logger__WEBPACK_IMPORTED_MODULE_0___default())));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (store);
+
+/***/ }),
+
+/***/ "./client/store/reducers/campusesReducer.js":
+/*!**************************************************!*\
+  !*** ./client/store/reducers/campusesReducer.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/constants */ "./client/store/actions/constants.js");
+
+
+const campusesReducer = (state = [], action) => {
+  const {
+    type
+  } = action;
+
+  if (type === _actions_constants__WEBPACK_IMPORTED_MODULE_0__.default.SET_CAMPUSES) {
+    return action.campuses;
+  } else if (type === _actions_constants__WEBPACK_IMPORTED_MODULE_0__.default.CREATE_CAMPUS) {
+    state = [...state, action.campus];
+  } else if (type === _actions_constants__WEBPACK_IMPORTED_MODULE_0__.default.DESTROY_CAMPUS) {
+    state = state.filter(campus => campus.id !== action.campus.id);
+  } else if (type === _actions_constants__WEBPACK_IMPORTED_MODULE_0__.default.UPDATE_CAMPUS || type === _actions_constants__WEBPACK_IMPORTED_MODULE_0__.default.UNREGISTER_STUDENT || type === _actions_constants__WEBPACK_IMPORTED_MODULE_0__.default.REGISTER_STUDENT) {
+    state = state.filter(campus => campus.id !== action.campus.id).concat([action.campus]);
+  }
+
+  return state;
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (campusesReducer);
+
+/***/ }),
+
+/***/ "./client/store/reducers/index.js":
+/*!****************************************!*\
+  !*** ./client/store/reducers/index.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _campusesReducer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./campusesReducer */ "./client/store/reducers/campusesReducer.js");
+/* harmony import */ var _studentsReducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./studentsReducer */ "./client/store/reducers/studentsReducer.js");
+
+
+
+const reducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({
+  campuses: _campusesReducer__WEBPACK_IMPORTED_MODULE_0__.default,
+  students: _studentsReducer__WEBPACK_IMPORTED_MODULE_1__.default
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (reducer);
+
+/***/ }),
+
+/***/ "./client/store/reducers/studentsReducer.js":
+/*!**************************************************!*\
+  !*** ./client/store/reducers/studentsReducer.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/constants */ "./client/store/actions/constants.js");
+
+
+const studentsReducer = (state = [], action) => {
+  const {
+    type
+  } = action;
+
+  if (type === _actions_constants__WEBPACK_IMPORTED_MODULE_0__.default.SET_STUDENTS) {
+    return action.students;
+  } else if (type === _actions_constants__WEBPACK_IMPORTED_MODULE_0__.default.CREATE_STUDENT) {
+    return [...state, action.student];
+  } else if (type === _actions_constants__WEBPACK_IMPORTED_MODULE_0__.default.DESTROY_STUDENT) {
+    state = state.filter(student => student.id !== action.student.id);
+  } else if (type === _actions_constants__WEBPACK_IMPORTED_MODULE_0__.default.UNREGISTER_STUDENT || type === _actions_constants__WEBPACK_IMPORTED_MODULE_0__.default.UPDATE_STUDENT || type === _actions_constants__WEBPACK_IMPORTED_MODULE_0__.default.REGISTER_STUDENT) {
+    state = state.filter(student => student.id !== action.student.id).concat([action.student]);
+  }
+
+  return state;
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (studentsReducer);
+
+/***/ }),
+
+/***/ "./client/store/thunks/campusThunks.js":
+/*!*********************************************!*\
+  !*** ./client/store/thunks/campusThunks.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _actions_creators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/creators */ "./client/store/actions/creators.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+const fetchCampus = campusId => {
   return async dispatch => {
     try {
-      const campus = (await axios__WEBPACK_IMPORTED_MODULE_2___default().get(`/api/campuses/${campusId}`)).data;
-      dispatch(setCampus(campus));
+      const campus = (await axios__WEBPACK_IMPORTED_MODULE_1___default().get(`/api/campuses/${campusId}`)).data;
+      dispatch(_actions_creators__WEBPACK_IMPORTED_MODULE_0__.default.setCampus(campus));
     } catch (error) {
-      console.log('called from fetchCampus thunk');
+      console.log('called from fetchCampus ');
       console.log(error);
     }
   };
 };
-const fetchCampusesThunk = () => {
+
+const fetchCampuses = () => {
   return async dispatch => {
     try {
-      const campuses = (await axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/campuses')).data;
-      dispatch(setCampuses(campuses));
+      const campuses = (await axios__WEBPACK_IMPORTED_MODULE_1___default().get('/api/campuses')).data;
+      dispatch(_actions_creators__WEBPACK_IMPORTED_MODULE_0__.default.setCampuses(campuses));
     } catch (error) {
-      console.log('called from fetchCampuses thunk');
+      console.log('called from fetchCampuses ');
       console.log(error);
     }
   };
 };
-const createCampusThunk = (name, address, history) => {
+
+const createCampus = (name, address, history) => {
   return async dispatch => {
     try {
-      const campus = (await axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/campuses', {
+      const campus = (await axios__WEBPACK_IMPORTED_MODULE_1___default().post('/api/campuses', {
         name,
         address
       })).data;
-      dispatch(createCampus(campus));
+      dispatch(_actions_creators__WEBPACK_IMPORTED_MODULE_0__.default.createCampus(campus));
       history.push('/campuses');
     } catch (error) {
-      console.log('called from createCampus thunk');
+      console.log('called from createCampus ');
       console.log(error);
     }
   };
 };
-const updateCampusThunk = (id, data, history) => {
+
+const updateCampus = (id, data, history) => {
   return async dispatch => {
     try {
-      const campus = (await axios__WEBPACK_IMPORTED_MODULE_2___default().put(`/api/campuses/${id}`, data)).data;
-      dispatch(updateCampus(campus));
+      const campus = (await axios__WEBPACK_IMPORTED_MODULE_1___default().put(`/api/campuses/${id}`, data)).data;
+      dispatch(_actions_creators__WEBPACK_IMPORTED_MODULE_0__.default.updateCampus(campus));
       history.push('/campuses');
     } catch (error) {
-      console.log('called from updateCampus thunk');
+      console.log('called from updateCampus ');
       console.log(error);
     }
   };
 };
-const destroyCampusThunk = campus => {
+
+const destroyCampus = campus => {
   return async dispatch => {
     try {
-      dispatch(destroyCampus(campus));
-      await axios__WEBPACK_IMPORTED_MODULE_2___default().delete(`/api/campuses/${campus.id}`);
+      dispatch(_actions_creators__WEBPACK_IMPORTED_MODULE_0__.default.destroyCampus(campus));
+      await axios__WEBPACK_IMPORTED_MODULE_1___default().delete(`/api/campuses/${campus.id}`);
     } catch (error) {
-      console.log('called from destroyCampus thunk');
+      console.log('called from destroyCampus ');
       console.log(error);
     }
   };
 };
-const fetchStudentsThunk = () => {
+
+const campus = {
+  createCampus,
+  fetchCampus,
+  fetchCampuses,
+  destroyCampus,
+  updateCampus
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (campus);
+
+/***/ }),
+
+/***/ "./client/store/thunks/index.js":
+/*!**************************************!*\
+  !*** ./client/store/thunks/index.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _campusThunks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./campusThunks */ "./client/store/thunks/campusThunks.js");
+/* harmony import */ var _studentThunks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./studentThunks */ "./client/store/thunks/studentThunks.js");
+
+
+const thunks = {
+  campus: _campusThunks__WEBPACK_IMPORTED_MODULE_0__.default,
+  student: _studentThunks__WEBPACK_IMPORTED_MODULE_1__.default
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (thunks);
+
+/***/ }),
+
+/***/ "./client/store/thunks/studentThunks.js":
+/*!**********************************************!*\
+  !*** ./client/store/thunks/studentThunks.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_creators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/creators */ "./client/store/actions/creators.js");
+
+
+
+const fetchStudents = () => {
   return async dispatch => {
     try {
-      const students = (await axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/students')).data;
-      dispatch(setStudents(students));
+      const students = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/students')).data;
+      dispatch(_actions_creators__WEBPACK_IMPORTED_MODULE_1__.default.setStudents(students));
     } catch (error) {
-      console.log('called from deleteCampus thunk');
+      console.log('called from deleteCampus ');
       console.log(error);
     }
   };
 };
-const createStudentThunk = (firstName, lastName, email, history) => {
+
+const createStudent = (firstName, lastName, email, history) => {
   return async dispatch => {
     try {
-      const student = (await axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/students/', {
+      const student = (await axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/students/', {
         firstName,
         lastName,
         email
       })).data;
-      dispatch(createStudent(student));
+      dispatch(_actions_creators__WEBPACK_IMPORTED_MODULE_1__.default.createStudent(student));
       history.push('/students');
     } catch (error) {
       console.log('called from createStudent');
@@ -3449,105 +3698,70 @@ const createStudentThunk = (firstName, lastName, email, history) => {
     }
   };
 };
-const updateStudentThunk = (id, data, history) => {
+
+const updateStudent = (id, data, history) => {
   return async dispatch => {
     try {
-      const student = (await axios__WEBPACK_IMPORTED_MODULE_2___default().put(`/api/students/${id}`, data)).data;
-      dispatch(updateStudent(student));
+      const student = (await axios__WEBPACK_IMPORTED_MODULE_0___default().put(`/api/students/${id}`, data)).data;
+      dispatch(_actions_creators__WEBPACK_IMPORTED_MODULE_1__.default.updateStudent(student));
       history.push(`/students/${student.id}`);
     } catch (error) {
-      console.log('called from updateStudent thunk');
+      console.log('called from updateStudent ');
       console.log(error);
     }
   };
 };
-const registerStudentThunk = (id, campusId) => {
+
+const registerStudent = (id, campusId) => {
   return async dispatch => {
     try {
-      const student = (await axios__WEBPACK_IMPORTED_MODULE_2___default().put(`/api/students/${id}`, {
+      const student = (await axios__WEBPACK_IMPORTED_MODULE_0___default().put(`/api/students/${id}`, {
         campusId: campusId
       })).data;
-      const campus = (await axios__WEBPACK_IMPORTED_MODULE_2___default().get(`/api/campuses/${campusId}`)).data;
-      dispatch(registerStudent(student, campus));
+      const campus = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`/api/campuses/${campusId}`)).data;
+      dispatch(_actions_creators__WEBPACK_IMPORTED_MODULE_1__.default.registerStudent(student, campus));
     } catch (error) {
-      console.log('called from registerStudent thunk');
+      console.log('called from registerStudent ');
       console.log(error);
     }
   };
 };
-const unregisterStudentThunk = (id, campusId) => {
+
+const unregisterStudent = (id, campusId) => {
   return async dispatch => {
     try {
-      const student = (await axios__WEBPACK_IMPORTED_MODULE_2___default().put(`/api/students/${id}`)).data;
-      const campus = (await axios__WEBPACK_IMPORTED_MODULE_2___default().get(`/api/campuses/${campusId}`)).data;
-      dispatch(unregisterStudent(student, campus));
+      const student = (await axios__WEBPACK_IMPORTED_MODULE_0___default().put(`/api/students/${id}`)).data;
+      const campus = (await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`/api/campuses/${campusId}`)).data;
+      dispatch(_actions_creators__WEBPACK_IMPORTED_MODULE_1__.default.unregisterStudent(student, campus));
     } catch (error) {
-      console.log('called from unregisterStudent thunk');
+      console.log('called from unregisterStudent ');
       console.log(error);
     }
   };
 };
-const destroyStudentThunk = (student, history) => {
+
+const destroyStudent = (student, history) => {
   return async dispatch => {
     try {
-      dispatch(destroyStudent(student));
+      dispatch(_actions_creators__WEBPACK_IMPORTED_MODULE_1__.default.destroyStudent(student));
       history.push('/students');
-      await axios__WEBPACK_IMPORTED_MODULE_2___default().delete(`/api/students/${student.id}`);
+      await axios__WEBPACK_IMPORTED_MODULE_0___default().delete(`/api/students/${student.id}`);
     } catch (error) {
-      console.log('called from destroyStudent thunk');
+      console.log('called from destroyStudent ');
       console.log(error);
     }
   };
-}; // reducers
-
-const campusesReducer = (state = [], action) => {
-  const {
-    type
-  } = action;
-
-  if (type === SET_CAMPUSES) {
-    return action.campuses;
-  } else if (type === CREATE_CAMPUS) {
-    state = [...state, action.campus];
-  } else if (type === DESTROY_CAMPUS) {
-    state = state.filter(campus => campus.id !== action.campus.id);
-  } else if (type === UPDATE_CAMPUS || type === UNREGISTER_STUDENT || type === REGISTER_STUDENT) {
-    state = state.filter(campus => campus.id !== action.campus.id).concat([action.campus]);
-  }
-
-  return state;
 };
 
-const studentsReducer = (state = [], action) => {
-  const {
-    type
-  } = action;
-
-  if (type === SET_STUDENTS) {
-    return action.students;
-  } else if (type === CREATE_STUDENT) {
-    return [...state, action.student];
-  } else if (type === DESTROY_STUDENT) {
-    state = state.filter(student => student.id !== action.student.id);
-  } else if (type === UNREGISTER_STUDENT || type === UPDATE_STUDENT || type === REGISTER_STUDENT) {
-    state = state.filter(student => student.id !== action.student.id).concat([action.student]);
-  }
-
-  return state;
+const student = {
+  fetchStudents,
+  updateStudent,
+  createStudent,
+  unregisterStudent,
+  registerStudent,
+  destroyStudent
 };
-
-const reducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({
-  campuses: campusesReducer,
-  students: studentsReducer,
-  selectedCampus: (state = {}, action) => {
-    if (action.type === SET_CAMPUS) {
-      state = action.campus;
-    }
-
-    return state;
-  }
-});
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,redux__WEBPACK_IMPORTED_MODULE_3__.createStore)(reducer, (0,redux__WEBPACK_IMPORTED_MODULE_3__.applyMiddleware)(redux_thunk__WEBPACK_IMPORTED_MODULE_1__.default, (redux_logger__WEBPACK_IMPORTED_MODULE_0___default()))));
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (student);
 
 /***/ }),
 
@@ -40179,7 +40393,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/App */ "./client/components/App.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./client/store.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./client/store/index.js");
 
 
 

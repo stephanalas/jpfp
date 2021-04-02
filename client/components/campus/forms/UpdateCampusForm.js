@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
-import { updateCampusThunk } from '../../../store/store'
+import thunks from '../../../store/thunks'
 class UpdateCampusForm extends Component {
   constructor(props) {
     super(props);
@@ -71,7 +71,8 @@ class UpdateCampusForm extends Component {
 }
 
 export default connect(null, (dispatch) => {
+  const { updateCampus } = thunks.campus;
   return {
-    update: (campus, data, history) => dispatch(updateCampusThunk(campus, data, history))
+    update: (campus, data, history) => dispatch(updateCampus(campus, data, history))
   }
 })(UpdateCampusForm);
