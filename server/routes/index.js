@@ -91,10 +91,12 @@ router.put('/students/:id', async (req, res, next) => {
     } else if (Object.keys(req.body).includes('campusId')) {
       student.campusId = req.body.campusId;
     } else {
-      const { firstName, lastName, email} = req.body;
+      const { firstName, lastName, email, gpa, imageUrl} = req.body;
       student.firstName = firstName;
       student.lastName = lastName;
       student.email = email;
+      student.gpa = gpa;
+      student.imageUrl = imageUrl;
     }
     
     await student.save();

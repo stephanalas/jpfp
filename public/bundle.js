@@ -2354,14 +2354,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AllCampuses__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AllCampuses */ "./client/components/AllCampuses.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./client/store.js");
 /* harmony import */ var _Nav__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Nav */ "./client/components/Nav.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _AllStudents__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./AllStudents */ "./client/components/AllStudents.js");
-/* harmony import */ var _SingleCampus__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SingleCampus */ "./client/components/SingleCampus.js");
-/* harmony import */ var _SingleStudent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./SingleStudent */ "./client/components/SingleStudent.js");
-/* harmony import */ var _AddCampusForm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./AddCampusForm */ "./client/components/AddCampusForm.js");
-/* harmony import */ var _AddStudentForm__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./AddStudentForm */ "./client/components/AddStudentForm.js");
-/* harmony import */ var _UpdateCampus__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./UpdateCampus */ "./client/components/UpdateCampus.js");
-/* harmony import */ var _UpdateStudentForm__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./UpdateStudentForm */ "./client/components/UpdateStudentForm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var _AllStudents__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./AllStudents */ "./client/components/AllStudents.js");
+/* harmony import */ var _SingleCampus__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SingleCampus */ "./client/components/SingleCampus.js");
+/* harmony import */ var _SingleStudent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./SingleStudent */ "./client/components/SingleStudent.js");
+/* harmony import */ var _AddCampusForm__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./AddCampusForm */ "./client/components/AddCampusForm.js");
+/* harmony import */ var _AddStudentForm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./AddStudentForm */ "./client/components/AddStudentForm.js");
+/* harmony import */ var _UpdateCampus__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./UpdateCampus */ "./client/components/UpdateCampus.js");
+/* harmony import */ var _UpdateStudentForm__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./UpdateStudentForm */ "./client/components/UpdateStudentForm.js");
 
 
 
@@ -2382,41 +2383,41 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
   }
 
   render() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.HashRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.HashRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
       component: _Nav__WEBPACK_IMPORTED_MODULE_4__.default
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
       path: "/",
       component: _AllCampuses__WEBPACK_IMPORTED_MODULE_2__.default,
       exact: true
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
       path: "/campuses",
       exact: true,
       component: _AllCampuses__WEBPACK_IMPORTED_MODULE_2__.default
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
       path: "/students",
-      component: _AllStudents__WEBPACK_IMPORTED_MODULE_6__.default,
+      component: _AllStudents__WEBPACK_IMPORTED_MODULE_5__.default,
       exact: true
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Switch, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
       path: "/campuses/update/:id",
-      component: _UpdateCampus__WEBPACK_IMPORTED_MODULE_11__.default
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      component: _UpdateCampus__WEBPACK_IMPORTED_MODULE_10__.default
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
       path: "/students/update/:id",
-      component: _UpdateStudentForm__WEBPACK_IMPORTED_MODULE_12__.default
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      component: _UpdateStudentForm__WEBPACK_IMPORTED_MODULE_11__.default
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
       path: "/students/create",
       exact: true,
-      component: _AddStudentForm__WEBPACK_IMPORTED_MODULE_10__.default
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      component: _AddStudentForm__WEBPACK_IMPORTED_MODULE_9__.default
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
       path: "/campuses/create",
       exact: true,
-      component: _AddCampusForm__WEBPACK_IMPORTED_MODULE_9__.default
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      component: _AddCampusForm__WEBPACK_IMPORTED_MODULE_8__.default
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
       path: "/campuses/:id",
       exact: true,
-      component: _SingleCampus__WEBPACK_IMPORTED_MODULE_7__.default
-    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Route, {
+      component: _SingleCampus__WEBPACK_IMPORTED_MODULE_6__.default
+    }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
       path: "/students/:id",
-      component: _SingleStudent__WEBPACK_IMPORTED_MODULE_8__.default
+      component: _SingleStudent__WEBPACK_IMPORTED_MODULE_7__.default
     })));
   }
 
@@ -2457,10 +2458,31 @@ class AssignCampusForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
     this.state = {
       value: 0
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  handleChange(ev) {
+    this.setState({
+      value: ev.target.value
+    });
+  }
+
+  async onSubmit(ev) {
+    ev.preventDefault();
+    await this.props.register(this.props.student.id, this.state.value);
   }
 
   render() {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Select Campus"), this.props.campuses.map(campus => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, campus.name))), this.props.student.campus ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+      onSubmit: this.onSubmit
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
+      value: this.state.value,
+      onChange: this.handleChange,
+      name: "campuses"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Select Campus"), this.props.campuses.map(campus => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", {
+      value: `${campus.id}`
+    }, campus.name))), this.props.student.campus ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       className: "add-btn"
     }, "Change Campus") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
       className: "add-btn"
@@ -2656,11 +2678,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./client/store.js");
-/* harmony import */ var _AssignCampusForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AssignCampusForm */ "./client/components/AssignCampusForm.js");
-/* harmony import */ var _CampusCard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CampusCard */ "./client/components/CampusCard.js");
-
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store */ "./client/store.js");
+/* harmony import */ var _AssignCampusForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AssignCampusForm */ "./client/components/AssignCampusForm.js");
+/* harmony import */ var _CampusCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CampusCard */ "./client/components/CampusCard.js");
 
 
 
@@ -2703,7 +2723,8 @@ class SingleStudent extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
   render() {
     const {
       student,
-      history
+      history,
+      destroy
     } = this.props;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
       id: "update-student-main"
@@ -2726,12 +2747,13 @@ class SingleStudent extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
       className: "student-btns single-view-edit",
       onClick: () => history.push(`/students/update/${student.id}`)
     }, "edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-      className: "student-btns single-view-delete"
+      className: "student-btns single-view-delete",
+      onClick: () => destroy(student)
     }, "delete"))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", {
       className: "student-view-campus-section"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, student.campus ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "This student is registered to a campus") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "This student is not registered to a campus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AssignCampusForm__WEBPACK_IMPORTED_MODULE_4__.default, {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, student.campus ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "This student is registered to a campus") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", null, "This student is not registered to a campus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_AssignCampusForm__WEBPACK_IMPORTED_MODULE_3__.default, {
       student: student
-    })), student.campus ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CampusCard__WEBPACK_IMPORTED_MODULE_5__.default, {
+    })), student.campus ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_CampusCard__WEBPACK_IMPORTED_MODULE_4__.default, {
       campus: student.campus
     }) : ''));
   }
@@ -2753,7 +2775,8 @@ class SingleStudent extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
   history
 }) => {
   return {
-    update: (id, data) => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_3__.updateStudentThunk)(id, data, history))
+    update: (id, data) => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.updateStudentThunk)(id, data, history)),
+    destroy: student => dispatch((0,_store__WEBPACK_IMPORTED_MODULE_2__.destroyStudentThunk)(student, history))
   };
 })(SingleStudent));
 
@@ -2913,20 +2936,8 @@ __webpack_require__.r(__webpack_exports__);
 
 class UpdateCampus extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
   constructor(props) {
-    super(props); // this.state = {
-    //   campus : {},
-    //   students: [],
-    //   student: ''
-    // };
-  } // componentDidMount() {
-  //   const { campus } = this.props
-  //   const newState = {
-  //     campus: campus,
-  //     students: campus.students
-  //   }
-  //   this.setState(newState);
-  // }
-
+    super(props);
+  }
 
   render() {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("main", {
@@ -3476,10 +3487,11 @@ const unregisterStudentThunk = (id, campusId) => {
     }
   };
 };
-const destroyStudentThunk = student => {
+const destroyStudentThunk = (student, history) => {
   return async dispatch => {
     try {
       dispatch(destroyStudent(student));
+      history.push('/students');
       await axios__WEBPACK_IMPORTED_MODULE_2___default().delete(`/api/students/${student.id}`);
     } catch (error) {
       console.log('called from destroyStudent thunk');

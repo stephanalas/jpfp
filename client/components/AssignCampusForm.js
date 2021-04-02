@@ -8,15 +8,24 @@ class AssignCampusForm extends Component {
     this.state = {
       value: 0
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
+  handleChange(ev) {
+    this.setState({ value: ev.target.value})
+  }
+  async onSubmit(ev) {
+    ev.preventDefault();
+    await this.props.register(this.props.student.id, this.state.value)
 
+  }
   render() {
     return (
-      <form>
-        <select>
+      <form onSubmit={this.onSubmit}>
+        <select value={this.state.value} onChange={this.handleChange} name='campuses'>
           <option>Select Campus</option>
           {
-            this.props.campuses.map(campus => <option>{campus.name}</option>)
+            this.props.campuses.map(campus => <option  value={`${campus.id}`} >{campus.name}</option>)
           }
         </select>
         {

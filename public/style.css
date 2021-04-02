@@ -576,6 +576,13 @@ body * {
   .update-view button {
     margin-top: 1rem;
   }
+  #update-student-main .campus-card-info h5 {
+    display: none;
+  }
+  #update-student-main .campus-card-info {
+    display: flex;
+    justify-content: space-around;
+  }
   /* edit student view */
   /* .update-student-form {
     display: flex;

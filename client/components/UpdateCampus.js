@@ -8,21 +8,7 @@ import AddStudentCampusForm from './AddStudentCampusForm';
 class UpdateCampus extends Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   campus : {},
-    //   students: [],
-    //   student: ''
-    // };
   }
-  // componentDidMount() {
-  //   const { campus } = this.props
-  //   const newState = {
-  //     campus: campus,
-  //     students: campus.students
-  //   }
-  //   this.setState(newState);
-  // }
-
   render() {
     return (
       <main className='update-view' id='update-campus-view'>

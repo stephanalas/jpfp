@@ -217,10 +217,11 @@ export const unregisterStudentThunk = (id, campusId) => {
   }
 }
 
-export const destroyStudentThunk = (student) => {
+export const destroyStudentThunk = (student, history) => {
   return async (dispatch) => {
     try {
       dispatch(destroyStudent(student));
+      history.push('/students');
       await axios.delete(`/api/students/${student.id}`)
     } catch (error) {
       console.log('called from destroyStudent thunk')

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { updateStudentThunk } from '../store';
+import { destroyStudentThunk, updateStudentThunk } from '../store';
 import AssignCampusForm from './AssignCampusForm';
 import CampusCard from './CampusCard'
 
@@ -29,7 +28,7 @@ class  SingleStudent extends Component {
     this.setState({[ev.target.name]: ev.target.value})
   }
   render() {
-    const { student, history} = this.props
+    const { student, history, destroy} = this.props
     return (
       <main id='update-student-main'>
         <h1>Student Info</h1>
@@ -41,7 +40,7 @@ class  SingleStudent extends Component {
               <span className='student-gpa'>GPA: {student.gpa}</span>
               <div className='student-tools'>
                 <button className='student-btns single-view-edit' onClick={() => history.push(`/students/update/${student.id}`)}>edit</button>
-                <button className='student-btns single-view-delete'>delete</button>
+                <button className='student-btns single-view-delete' onClick={() => destroy(student)}>delete</button>
               </div>
             </div>  
           </div>
@@ -76,6 +75,7 @@ export default connect((state,otherProps) => {
   }
 }, (dispatch, { history } ) => {
     return {
-      update: (id, data) => dispatch(updateStudentThunk(id, data, history))
+      update: (id, data) => dispatch(updateStudentThunk(id, data, history)),
+      destroy: (student) => dispatch(destroyStudentThunk(student, history))
     }
 })(SingleStudent)
