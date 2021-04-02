@@ -166,10 +166,10 @@ export const fetchStudentsThunk = () => {
   };
 };
 
-export const createStudentThunk = (firstName, lastName, email, campusId, history) => {
+export const createStudentThunk = (firstName, lastName, email, history) => {
   return async (dispatch) => {
     try {
-      const student = (await axios.post('/api/students/', {firstName, lastName, email, campusId})).data;
+      const student = (await axios.post('/api/students/', {firstName, lastName, email })).data;
       dispatch(createStudent(student));
       history.push('/students');
       
