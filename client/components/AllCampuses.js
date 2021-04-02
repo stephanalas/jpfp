@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { destroyCampus, fetchCampuses} from '../store';
+import { destroyCampusThunk, fetchCampusesThunk} from '../store';
 import CampusCard from './CampusCard';
 
 
@@ -51,10 +50,10 @@ class AllCampuses extends Component {
 export default connect(({campuses}) => ({campuses}), (dispatch) => {
   return {
     load : () => {
-      dispatch(fetchCampuses())
+      dispatch(fetchCampusesThunk())
     },
     destroy: (campus) => {
-      dispatch(destroyCampus(campus));
+      dispatch(destroyCampusThunk(campus));
     }
 
   }

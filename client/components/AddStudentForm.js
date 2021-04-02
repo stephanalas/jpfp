@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {  createStudent } from '../store';
+import {  createStudentThunk } from '../store';
 
 class AddStudentForm extends Component {
   constructor() {
@@ -61,6 +61,6 @@ class AddStudentForm extends Component {
 
 export default connect(null, (dispatch, { history }) => {
   return {
-    create: async (firstName, lastName, email, campusId) => dispatch(createStudent(firstName, lastName, email, campusId, history))
+    create: async (firstName, lastName, email, campusId) => dispatch(createStudentThunk(firstName, lastName, email, campusId, history))
   }
 })(AddStudentForm);

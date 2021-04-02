@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { destroyStudent } from '../store';
+import { destroyStudentThunk } from '../store';
 import StudentCard from './StudentCard';
 
 const Students = ({ students, history, destroy}) => {
@@ -31,7 +31,7 @@ const Students = ({ students, history, destroy}) => {
 export default connect(state => state, (dispatch) => {
   return {
     destroy : (student) =>{
-      dispatch(destroyStudent(student))
+      dispatch(destroyStudentThunk(student))
     }  
   }
 })(Students)

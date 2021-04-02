@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AllCampuses from './AllCampuses';
-import { fetchCampuses, fetchStudents } from '../store';
+import { fetchCampusesThunk, fetchStudentsThunk } from '../store';
 import Nav from './Nav'
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import Students from './AllStudents';
 import SingleCampus from './SingleCampus';
 import SingleStudent from './SingleStudent';
-import Home from './Home'
 import AddCampusForm from './AddCampusForm';
 import AddStudentForm from './AddStudentForm';
 import UpdateCampus from './UpdateCampus';
@@ -42,8 +41,8 @@ class App extends Component {
 export default connect(state => state, (dispatch) => {
   return {
     load: () => {
-      dispatch(fetchCampuses())
-      dispatch(fetchStudents())
+      dispatch(fetchCampusesThunk())
+      dispatch(fetchStudentsThunk())
     }
   }
 })(App);

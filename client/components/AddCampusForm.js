@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createCampus } from '../store';
+import { createCampusThunk } from '../store';
 
 class AddCampusForm extends Component {
   constructor() {
@@ -50,6 +50,6 @@ class AddCampusForm extends Component {
 
 export default connect(null, (dispatch, { history }) => {
   return {
-    create: (name, address) => dispatch(createCampus(name, address, history))
+    create: (name, address) => dispatch(createCampusThunk(name, address, history))
   }
 })(AddCampusForm);

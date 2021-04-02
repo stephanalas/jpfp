@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { updateStudent } from '../store';
+import { updateStudentThunk } from '../store';
 class  SingleStudent extends Component {
   constructor(props) {
     super(props)
@@ -85,6 +85,6 @@ export default connect((state,otherProps) => {
   }
 }, (dispatch, { history } ) => {
     return {
-      update: (id, data) => dispatch(updateStudent(id, data, history))
+      update: (id, data) => dispatch(updateStudentThunk(id, data, history))
     }
 })(SingleStudent)

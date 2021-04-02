@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { unregisterStudent } from '../store';
+import { unregisterStudentThunk } from '../store';
 import SmallStudenCard from './SmallStudenCard';
-const SingleCampus = ({campus, students, unregister }) => {
+const SingleCampus = ({campus, students, history }) => {
 
   return (
     <main className='single-campus-view'>
@@ -17,7 +17,7 @@ const SingleCampus = ({campus, students, unregister }) => {
             <section className='tools'>
               <h3>{campus.address}</h3>
               <div className='campus-btns'>
-                <button className='single-view-edit'>edit</button>
+                <button className='single-view-edit' onClick={() => history.push(`/campuses/update/${campus.id}`)}>edit</button>
                 <button className='single-view-delete'>delete</button>
               </div>
             </section>
@@ -26,7 +26,10 @@ const SingleCampus = ({campus, students, unregister }) => {
       </section>
       
       <section className='students-on-campus'>
-        <h2>Students on campus</h2>
+        <div className='campus-view-sub-header'>
+          <h2>Students on campus</h2>
+          <button className='add-btn'>Add Student</button>
+        </div>
         <ul className='students-on-campus-list'>
 
           { students.length  ? students.map(student => <SmallStudenCard key={student.id} student={student} />) : 'No students are currentley enrolled'}
@@ -41,12 +44,14 @@ const SingleCampus = ({campus, students, unregister }) => {
 export default connect((state,otherProps) => {
   const campus = state.campuses.find(campus => campus.id === otherProps.match.params.id*1) || {};
   const students = state.students.filter(student => student.campusId === campus.id) || [];
+  const { history } = otherProps;
   return {
     campus,
-    students
+    students,
+    history
   }
 }, (dispatch) => {
   return {
-    unregister: (id) => dispatch(unregisterStudent(id))
+    unregister: (id) => dispatch(unregisterStudentThunk(id))
   }
 })(SingleCampus)
