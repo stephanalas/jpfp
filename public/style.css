@@ -480,4 +480,119 @@ body * {
     padding-top: 2rem;
     font-size: larger;
   }
+  /* single student view */
+  .student {
+    display: flex;
+    width: 100%;
+    height: max-content;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(206, 228, 206);
+    border: 1px solid  rgb(179, 175, 175);
+    padding: 1rem;
+    margin: 1rem;
+  }
+  #update-student-main {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    height: 100%;
+  }
+  .single-student-view {
+    width: 70%;
+    height: min-content;
+    display: flex;
+  }
+  .student > .student-img {
+    height: 40%;
+    width: 50%;
+  }
+  .student-info {
+    width: 100%;
+    height: 20rem;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .student-btns {
+    width: 3rem;
+  }
+  .student-name {
+    font-size: 3rem;
+  }
+  .student-gpa {
+    font-size: 2rem;
+  }
+  .student-tools {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .student-btns {
+    width: 6rem;
+    border-radius: 0;
+  }
+  .student-view-campus-section {
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .student-view-campus-section > div  {
+    display: flex;
+    flex-flow: column;
+    width: 60%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .student-view-campus-section > div > form {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .student-view-campus-section > div > form > select {
+    width: 50%;
+    height: 2rem;
+  }
+  .student-view-campus-section .campus-card button {
+    display: none;
+  }
+  .update-view form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+  }
+  .update-view form section {
+    display: flex;
+    flex-flow: column;
+    width: 30rem;
+  }
+  .update-view input {
+    height: 2rem;
+  }
+  .update-view button {
+    margin-top: 1rem;
+  }
+  /* edit student view */
+  /* .update-student-form {
+    display: flex;
+    flex-flow: column;
+    height: 80%;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .update-student-form section {
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+  }
+  .update-student-form div {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width : 100%;
+  } */
 }

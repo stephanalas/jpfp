@@ -10,6 +10,7 @@ import SingleStudent from './SingleStudent';
 import AddCampusForm from './AddCampusForm';
 import AddStudentForm from './AddStudentForm';
 import UpdateCampus from './UpdateCampus';
+import UpdateStudentForm from './UpdateStudentForm';
 
 class App extends Component {
   componentDidMount() {
@@ -25,6 +26,7 @@ class App extends Component {
         <Route path='/students'  component={Students} exact/>
         <Switch>
           <Route path='/campuses/update/:id' component={UpdateCampus} />
+          <Route path='/students/update/:id' component={UpdateStudentForm} />
           <Route path='/students/create' exact component={AddStudentForm} />
           <Route path='/campuses/create' exact component={AddCampusForm} />
           <Route path='/campuses/:id' exact component={SingleCampus} />
