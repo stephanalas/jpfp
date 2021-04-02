@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { destroyStudentThunk, updateStudentThunk } from '../../store';
+import { destroyStudentThunk, updateStudentThunk } from '../../store/store';
 import AssignCampusForm from './forms/AssignCampusForm';
 import CampusCard from '../campus/CampusCard'
 

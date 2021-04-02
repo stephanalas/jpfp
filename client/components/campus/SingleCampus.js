@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { unregisterStudentThunk } from '../../store';
+import { unregisterStudentThunk } from '../../store/store';
 import SmallStudenCard from '../student/SmallStudenCard';
 const SingleCampus = ({campus, students, history }) => {
 

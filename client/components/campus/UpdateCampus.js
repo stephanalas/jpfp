@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCampusThunk, registerStudentThunk, updateCampusThunk } from '../../store';
+import { fetchCampusThunk, registerStudentThunk, updateCampusThunk } from '../../store/store';
 import UpdateCampusForm from './forms/UpdateCampusForm';
 import StudentRow from '../student/StudentRow';
 import AddStudentCampusForm from './forms/AddStudentCampusForm';

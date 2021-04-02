@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
-import { updateCampusThunk } from '../../../store'
+import { updateCampusThunk } from '../../../store/store'
 class UpdateCampusForm extends Component {
   constructor(props) {
     super(props);

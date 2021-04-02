@@ -2,7 +2,6 @@ import axios from 'axios';
 import CREATORS from '../actions/creators';
 
 
-
 const fetchStudents = () => {
   return async (dispatch) => {
     try {
