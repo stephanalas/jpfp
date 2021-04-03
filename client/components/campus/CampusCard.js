@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const CampusCard = ({ campus, destroy }) => {
+  // const [campusLocal, setCampus] = useState(campus);
 
+  //   useEffect( () => {
+  //     setCampus(campus)
+  //   }, campusLocal);
+  
   return (
     <li key={campus.id} className='campus-card'>
     <img src={campus.imageUrl} className='campus-img' />
@@ -14,7 +19,8 @@ const CampusCard = ({ campus, destroy }) => {
           <h2>{campus.name}</h2>
         </Link>
         <h5>{
-            Object.keys(campus).includes('students') ? `${campus.students.length} Student(s) currently enrolled` : 'No students are enrolled yet'
+            
+            campus.students ? `${campus.students.length} Student(s) currently enrolled` : 'No Students enrolled'
             }
         </h5>
       </div>

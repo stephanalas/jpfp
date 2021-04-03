@@ -45,7 +45,7 @@ const updateCampus = (id, data, history) => {
 
       const campus = (await axios.put(`/api/campuses/${id}`, data)).data;
       dispatch(CREATORS.updateCampus(campus))
-      history.push('/campuses'); 
+      history.push(`/campuses/${id}`); 
     } catch (error) {
       console.log('called from updateCampus ');
       console.log(error);
@@ -57,8 +57,8 @@ const destroyCampus = (campus, history) => {
   return async (dispatch) => {
     try {
       dispatch(CREATORS.destroyCampus(campus));
-      history.push('/campuses')
       await axios.delete(`/api/campuses/${campus.id}`)
+      history.push('/campuses')
     } catch (error) {
       console.log('called from destroyCampus ')
       console.log(error)

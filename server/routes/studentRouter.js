@@ -13,7 +13,8 @@ studentRouter.get('/', async (req, res, next) => {
 
 studentRouter.post('/', async (req, res, next) => {
   try {
-    const student = await Student.create(req.body);
+    const { firstName, lastName, email } = req.body;
+    const student = await Student.create({ firstName, lastName, email});
     res.status(201).send(student);
   } catch (error) {
     next(error)
@@ -22,7 +23,8 @@ studentRouter.post('/', async (req, res, next) => {
 
 studentRouter.get('/:id', async (req, res, next) => {
   try {
-    res.send(await Student.findByPk(req.params.id, { include: [Campus]}));
+    const { id } = req.params.id
+    res.send(await Student.findByPk(id, { include: [Campus]}));
   } catch (error) {
     next(error)
   }
@@ -53,7 +55,8 @@ studentRouter.put('/:id', async (req, res, next) => {
 })
 studentRouter.delete('/:id', async (req, res, next) => {
   try {
-    const student = await Student.findByPk(req.params.id);
+    const { id } = req.params
+    const student = await Student.findByPk(id);
     await student.destroy();
     console.log('student deleted');
   } catch (error) {

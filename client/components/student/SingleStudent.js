@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import { connect } from 'react-redux';
 import thunks from '../../store/thunks';
 import AssignCampusForm from './forms/AssignCampusForm';
@@ -39,13 +39,10 @@ const SingleStudent = ({ student, history, destroy }) => {
 
 export default connect((state,otherProps) => {
   const student = state.students.find(student => student.id === otherProps.match.params.id*1) || {};
-
-  const campus = state.campuses.find(campus => campus.id === student.campusId) || {};
   const { history } = otherProps;
 
   return {
     student,
-    campus,
     history
   }
 }, (dispatch, { history } ) => {

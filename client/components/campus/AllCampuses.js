@@ -1,10 +1,14 @@
-import React, { Component, useEffect } from 'react';
-import { connect } from 'react-redux';
+import React, { Component, useEffect, useState } from 'react';
+import { connect, useDispatch } from 'react-redux';
 import thunks from '../../store/thunks/index'
 import CampusCard from './CampusCard';
 
 
-const AllCampuses = ({campuses, destroy, history, load}) => {
+const AllCampuses = ({campuses, destroy, history }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(thunks.campus.fetchCampuses())
+  }, [dispatch])
     if (campuses.length === 0) {
       return (
         <main className='no-view'>
