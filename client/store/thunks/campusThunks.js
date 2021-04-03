@@ -53,10 +53,11 @@ const updateCampus = (id, data, history) => {
   }
 }
 
-const destroyCampus = (campus) => {
+const destroyCampus = (campus, history) => {
   return async (dispatch) => {
     try {
       dispatch(CREATORS.destroyCampus(campus));
+      history.push('/campuses')
       await axios.delete(`/api/campuses/${campus.id}`)
     } catch (error) {
       console.log('called from destroyCampus ')

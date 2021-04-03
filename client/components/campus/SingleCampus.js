@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import thunks from '../../store/thunks'
 import SmallStudenCard from '../student/SmallStudenCard';
-const SingleCampus = ({campus, students, history }) => {
+const SingleCampus = ({campus, students, history, destroy }) => {
 
   return (
     <main className='single-campus-view'>
@@ -18,7 +18,7 @@ const SingleCampus = ({campus, students, history }) => {
               <h3>{campus.address}</h3>
               <div className='campus-btns'>
                 <button className='single-view-edit' onClick={() => history.push(`/campuses/update/${campus.id}`)}>edit</button>
-                <button className='single-view-delete'>delete</button>
+                <button className='single-view-delete' onClick={() => destroy(campus)}>delete</button>
               </div>
             </section>
           </section>
@@ -50,9 +50,11 @@ export default connect((state,otherProps) => {
     students,
     history
   }
-}, (dispatch) => {
+}, (dispatch, { history }) => {
   const { unregisterStudent } = thunks.student;
+  const { destroyCampus } = thunks.campus;
   return {
-    unregister: (id) => dispatch(unregisterStudent(id))
+    unregister: (id) => dispatch(unregisterStudent(id)),
+    destroy: (campus) => dispatch(destroyCampus(campus, history))
   }
 })(SingleCampus)

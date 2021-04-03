@@ -1,34 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { connect } from 'react-redux';
 import thunks from '../../store/thunks/index'
 import CampusCard from './CampusCard';
 
 
-class AllCampuses extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      campuses: props.campuses
-    }
-  }
-  componentDidMount() {
-    this.props.load();
-  }
-
-  create() {
-    this.props.history.push('/campuses/create');
-  }
-
-  render() {
-
-    const { campuses, destroy } = this.props;
-
+const AllCampuses = ({campuses, destroy, history, load}) => {
     if (campuses.length === 0) {
       return (
         <main className='no-view'>
           <h1>All Campuses</h1>
           <p>There are no campuses registered in the database</p>
-          <button className='add-btn' onClick={create}>Add Campus</button>
+          <button className='add-btn' onClick={() => history.push('/campuses/create')}>Add Campus</button>
         </main>
       )
     }
@@ -36,7 +18,7 @@ class AllCampuses extends Component {
       <main id='all-campuses-view'>
         <div className='all-campus-header'>
           <h1>All Campuses</h1>
-          <button className='add-btn' onClick={this.create}>Add Campus</button>
+          <button className='add-btn' onClick={() => history.push('/campuses/create')}>Add Campus</button>
         </div>
        
         <ul className='campus-list'>
@@ -46,10 +28,9 @@ class AllCampuses extends Component {
         </ul>
       </main>
     )
-  };
-}
+};
 
-export default connect(({campuses}) => ({campuses}), (dispatch) => {
+export default connect(({campuses}, { history }) => ({campuses, history}), (dispatch) => {
   const { destroyCampus, fetchCampuses } = thunks.campus 
   return {
     load : () => {
