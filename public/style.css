@@ -188,17 +188,6 @@ body * {
   align-items: center;
   height: 35%;
 }
-/* 
-.student-card-info {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-}
-
-.student-card-info button {
-  margin-top: 1rem;
-  width: 5rem;
-} */
 
 /* update-campus */
 
@@ -583,23 +572,8 @@ body * {
     display: flex;
     justify-content: space-around;
   }
-  /* edit student view */
-  /* .update-student-form {
-    display: flex;
-    flex-flow: column;
-    height: 80%;
-    align-items: center;
-    justify-content: space-around;
+  .error-message {
+    color: crimson;
   }
-  .update-student-form section {
-    width: 50%;
-    display: flex;
-    flex-flow: column;
-  }
-  .update-student-form div {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    width : 100%;
-  } */
+  
 }

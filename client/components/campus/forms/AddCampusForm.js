@@ -35,7 +35,7 @@ class AddCampusForm extends Component {
   onChange(ev) {
     this.setState({[ev.target.name] : ev.target.value})
   }
-  
+
   render() {
     const { state: {name, address}, onChange, onSubmit } = this;
     return (
@@ -45,12 +45,12 @@ class AddCampusForm extends Component {
           <section>
             <label htmlFor={name} >Name:
             </label>
-            <input name='name' value={name} onChange={onChange} ></input>
+            <input name='name' className='input' value={name} onChange={onChange} ></input>
           </section>
           <section>
             <label htmlFor={address} >Address:
             </label>
-            <input name='address' value={address} onChange={onChange} ></input>
+            <input name='address' className='input' value={address} onChange={onChange} ></input>
 
           </section>
           <ul className='error-list'>

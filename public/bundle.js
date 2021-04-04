@@ -2438,12 +2438,14 @@ class AddCampusForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
       htmlFor: name
     }, "Name:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
       name: "name",
+      className: "input",
       value: name,
       onChange: onChange
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("section", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("label", {
       htmlFor: address
     }, "Address:"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
       name: "address",
+      className: "input",
       value: address,
       onChange: onChange
     })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
