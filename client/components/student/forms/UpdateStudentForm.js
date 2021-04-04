@@ -89,17 +89,12 @@ class UpdateStudentForm extends Component {
             <label htmlFor={email}>E-mail:</label>
             <input name="email" value={email} onChange={onChange}></input>
           </section>
-          <ul className='error-list'>
-            {
-              this.state.errors.map(err => {
-                return (
-                  <li className='error-message'>{err.message}</li>
-                )
-              } )
-            }
+          <ul className="error-list">
+            {this.state.errors.map((err) => {
+              return <li className="error-message">{err.message}</li>;
+            })}
           </ul>
           <button className="add-btn">Update Student</button>
-          
         </form>
       </main>
     );

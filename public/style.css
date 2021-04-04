@@ -1,5 +1,5 @@
- 
- html, body {
+html,
+body {
   background-color: gainsboro;
   box-sizing: border-box;
   margin: 0;
@@ -14,14 +14,11 @@ h1 {
 body * {
   font-family: sans-serif;
   box-sizing: border-box;
-
 }
 #root {
   width: 100%;
   height: 100%;
-
 }
-
 
 /* nav-bar */
 
@@ -35,7 +32,6 @@ body * {
   padding: 0;
   width: 100%;
 }
-
 
 .nav-bar > li {
   list-style: none;
@@ -63,7 +59,7 @@ body * {
   text-align: center;
   font-size: 2rem;
 }
- 
+
 /* button styling */
 
 .add-btn {
@@ -76,11 +72,15 @@ body * {
   height: 3.5rem;
   outline: none;
 }
-.add-btn { transition: all .2s ease-in-out; }
-.add-btn:hover { transform: scale(1.1); }
+.add-btn {
+  transition: all 0.2s ease-in-out;
+}
+.add-btn:hover {
+  transform: scale(1.1);
+}
 
 .delete-btn {
-  background-color: rgb(223,70,97);
+  background-color: rgb(223, 70, 97);
   border: none;
   height: 2rem;
 }
@@ -113,7 +113,8 @@ body * {
 
 /* images */
 
-.campus-img, .student-img {
+.campus-img,
+.student-img {
   width: 100%;
   padding: 1rem;
 }
@@ -122,7 +123,8 @@ body * {
 /* #all-campus-view {
   
 } */
-.all-campus-header, .all-students-header {
+.all-campus-header,
+.all-students-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -136,7 +138,7 @@ body * {
   flex-flow: column;
   margin: 0;
   padding-inline-start: 0;
-  padding: 1rem
+  padding: 1rem;
 }
 .campus-card {
   background-color: rgb(179, 175, 175);
@@ -206,12 +208,11 @@ body * {
   width: 70%;
   display: flex;
   flex-flow: column;
-  align-items:  center;
+  align-items: center;
 }
 #update-campus-view section {
   display: flex;
   flex-flow: column;
-  
 }
 #update-campus-view .add-btn {
   margin-top: 1.5rem;
@@ -224,7 +225,7 @@ body * {
 }
 .single-campus-info {
   display: flex;
-  flex-flow: column; 
+  flex-flow: column;
 }
 .single-campus-name-bio {
   display: flex;
@@ -248,7 +249,7 @@ body * {
   border-radius: 12px;
 }
 .single-view-delete {
-  background-color: rgb(223,70,97);
+  background-color: rgb(223, 70, 97);
   width: 6rem;
   border: none;
   height: 3rem;
@@ -270,20 +271,19 @@ body * {
   justify-content: space-between;
   margin: 2rem;
 }
-  /* edit campus */
-  #root .update-view {
-    height: 100%;
-  }
-  #root .update-view form {
-    height: 100%;
-  }
-  .description-section {
-    height: 30%;
-  }
-  .description-section input {
-    height: 100%;
-  }
-
+/* edit campus */
+#root .update-view {
+  height: 100%;
+}
+#root .update-view form {
+  height: 100%;
+}
+.description-section {
+  height: 30%;
+}
+.description-section input {
+  height: 100%;
+}
 
 @media (min-width: 753px) {
   .add-view section {
@@ -293,19 +293,19 @@ body * {
     width: 50%;
   } */
 }
-@media (min-width:777px) {
+@media (min-width: 777px) {
   /* allcampusview */
   .campus-img {
     height: 10rem;
     width: 15rem;
     padding: 1rem;
     padding-left: 0.5rem;
-
   }
-  #all-campuses-view, .all-students-view{
+  #all-campuses-view,
+  .all-students-view {
     height: 100%;
   }
-  .campus-list  {
+  .campus-list {
     display: flex;
     flex-flow: row wrap;
     height: 100%;
@@ -313,13 +313,12 @@ body * {
     align-items: flex-start;
     justify-content: baseline;
   }
-  .campus-card  {
+  .campus-card {
     width: 48.5%;
     height: fit-content;
     display: flex;
     margin: 0.5rem;
     justify-content: center;
-
   }
   .campus-card h2 {
     font-size: medium;
@@ -368,9 +367,9 @@ body * {
     border-radius: 0;
   }
   .single-campus-view {
-      height: 100%;
-      display: flex;
-      flex-flow: column;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
   }
   .single-campus-view section.no-view {
     height: 100%;
@@ -403,7 +402,7 @@ body * {
   .student-card-info > a > h2 {
     margin: 0;
   }
-  .students-on-campus-list{
+  .students-on-campus-list {
     padding: 0;
     list-style: none;
     display: flex;
@@ -446,10 +445,10 @@ body * {
   .student-row {
     width: 80%;
     display: flex;
-    background-color:  rgb(179, 175, 175);
+    background-color: rgb(179, 175, 175);
     margin-right: 1rem;
     padding-right: 2rem;
-    margin: 1rem
+    margin: 1rem;
   }
   .student-row img {
     width: 30%;
@@ -459,7 +458,7 @@ body * {
     display: flex;
     justify-content: space-between;
     width: 70%;
-    padding: 2rem
+    padding: 2rem;
   }
   .student-row-btn {
     display: flex;
@@ -477,7 +476,7 @@ body * {
     justify-content: center;
     align-items: center;
     background-color: rgb(206, 228, 206);
-    border: 1px solid  rgb(179, 175, 175);
+    border: 1px solid rgb(179, 175, 175);
     padding: 1rem;
     margin: 1rem;
   }
@@ -529,7 +528,7 @@ body * {
     justify-content: space-around;
     width: 100%;
   }
-  .student-view-campus-section > div  {
+  .student-view-campus-section > div {
     display: flex;
     flex-flow: column;
     width: 60%;
@@ -575,5 +574,4 @@ body * {
   .error-message {
     color: crimson;
   }
-  
 }

@@ -19,8 +19,8 @@ class AssignCampusForm extends Component {
     this.props.register(this.props.student.id, this.state.value);
   }
   render() {
-    console.log(this.props.campuses)
-    const { campuses } = this.props
+    console.log(this.props.campuses);
+    const { campuses } = this.props;
     return (
       <form onSubmit={this.onSubmit}>
         <select
@@ -29,11 +29,11 @@ class AssignCampusForm extends Component {
           name="campuses"
         >
           <option>Select Campus</option>
-          { 
-          campuses.length ? campuses.map((campus) => (
-            <option value={`${campus.id}`}>{campus.name}</option>
-          )) : ''
-          }
+          {campuses.length
+            ? campuses.map((campus) => (
+                <option value={`${campus.id}`}>{campus.name}</option>
+              ))
+            : ""}
         </select>
         {this.props.student.campus ? (
           <button className="add-btn">Change Campus</button>

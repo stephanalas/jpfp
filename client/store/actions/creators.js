@@ -1,84 +1,84 @@
-import CONSTANTS from './constants';
+import CONSTANTS from "./constants";
 
 const setCampuses = (campuses) => {
   return {
     type: CONSTANTS.SET_CAMPUSES,
-    campuses
+    campuses,
   };
 };
 const setCampus = (campus) => {
   return {
     type: CONSTANTS.SET_CAMPUS,
-    campus
+    campus,
   };
 };
 const createCampus = (campus) => {
   return {
     type: CONSTANTS.CREATE_CAMPUS,
-    campus
+    campus,
   };
 };
 const destroyCampus = (campus) => {
   return {
     type: CONSTANTS.DESTROY_CAMPUS,
-    campus
+    campus,
   };
 };
 const updateCampus = (campus) => {
   return {
     type: CONSTANTS.UPDATE_CAMPUS,
     campus,
-  }
-}
+  };
+};
 const setStudents = (students) => {
   return {
     type: CONSTANTS.SET_STUDENTS,
-    students
+    students,
   };
 };
 const createStudent = (student) => {
   return {
     type: CONSTANTS.CREATE_STUDENT,
-    student
+    student,
   };
 };
 const updateStudent = (student) => {
   return {
     type: CONSTANTS.UPDATE_STUDENT,
-    student
-  }
-}
+    student,
+  };
+};
 const destroyStudent = (student) => {
   return {
     type: CONSTANTS.DESTROY_STUDENT,
-    student
+    student,
   };
 };
 const registerStudent = (student, campus) => {
   return {
     type: CONSTANTS.REGISTER_STUDENT,
     student,
-    campus
-  }
-}
-const unregisterStudent = (student,campus) => {
+    campus,
+  };
+};
+const unregisterStudent = (student, campus) => {
   return {
     type: CONSTANTS.UNREGISTER_STUDENT,
     student,
-    campus
-  }
-}
+    campus,
+  };
+};
 const setErrors = (errors) => {
   return {
     type: CONSTANTS.SET_ERRORS,
-    errors
-  }
-}
+    errors,
+  };
+};
 const clearErrors = () => {
   return {
-    type: CONSTANTS.CLEAR_ERRORS
-  }
-}
+    type: CONSTANTS.CLEAR_ERRORS,
+  };
+};
 const CREATORS = {
   setCampus,
   setCampuses,
@@ -92,7 +92,7 @@ const CREATORS = {
   unregisterStudent,
   registerStudent,
   setErrors,
-  clearErrors
+  clearErrors,
 };
 
 export default CREATORS;

@@ -1,10 +1,9 @@
-
-import campus from './campusThunks'
-import student from './studentThunks'
+import campus from "./campusThunks";
+import student from "./studentThunks";
 
 const thunks = {
   campus,
-  student
-}
+  student,
+};
 
 export default thunks;

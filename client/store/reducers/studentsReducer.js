@@ -1,4 +1,4 @@
-import CONSTANTS from '../actions/constants';
+import CONSTANTS from "../actions/constants";
 
 const studentsReducer = (state = [], action) => {
   const { type } = action;
@@ -7,18 +7,24 @@ const studentsReducer = (state = [], action) => {
   } else if (type === CONSTANTS.CREATE_STUDENT) {
     return [...state, action.student];
   } else if (type === CONSTANTS.DESTROY_STUDENT) {
-    state = state.filter(student => student.id !== action.student.id)
-  } else if (type === CONSTANTS.UNREGISTER_STUDENT || type === CONSTANTS.UPDATE_STUDENT || type=== CONSTANTS.REGISTER_STUDENT ) {
-    state = state.filter(student => student.id !== action.student.id).concat([action.student])
+    state = state.filter((student) => student.id !== action.student.id);
+  } else if (
+    type === CONSTANTS.UNREGISTER_STUDENT ||
+    type === CONSTANTS.UPDATE_STUDENT ||
+    type === CONSTANTS.REGISTER_STUDENT
+  ) {
+    state = state
+      .filter((student) => student.id !== action.student.id)
+      .concat([action.student]);
   } else if (type === CONSTANTS.DESTROY_CAMPUS) {
-    state = state.map(student => {
+    state = state.map((student) => {
       if (student.campusId === action.campus.id) {
         student.campus = null;
       }
       return student;
-    })
+    });
   }
-  return state
+  return state;
 };
 
 export default studentsReducer;
