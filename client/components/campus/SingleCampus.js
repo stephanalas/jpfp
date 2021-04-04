@@ -33,7 +33,7 @@ const SingleCampus = ({ campus, students, history, destroy }) => {
           </section>
         </div>
       </section>
-
+      {/* comment here */}
       <section className="students-on-campus">
         <div className="campus-view-sub-header">
           <h2>Students on campus</h2>
