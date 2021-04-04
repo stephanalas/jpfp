@@ -2249,7 +2249,8 @@ const SingleCampus = ({
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "campus-view-sub-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", null, "Students on campus"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
-    className: "add-btn"
+    className: "add-btn",
+    onClick: () => history.push(`/campuses/update/${campus.id}`)
   }, "Add Student")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
     className: "students-on-campus-list"
   }, students.length ? students.map(student => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_student_SmallStudenCard__WEBPACK_IMPORTED_MODULE_3__.default, {

@@ -37,7 +37,12 @@ const SingleCampus = ({ campus, students, history, destroy }) => {
       <section className="students-on-campus">
         <div className="campus-view-sub-header">
           <h2>Students on campus</h2>
-          <button className="add-btn">Add Student</button>
+          <button
+            className="add-btn"
+            onClick={() => history.push(`/campuses/update/${campus.id}`)}
+          >
+            Add Student
+          </button>
         </div>
         <ul className="students-on-campus-list">
           {students.length
