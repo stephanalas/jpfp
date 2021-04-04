@@ -27,7 +27,7 @@ const destroyCampus = (campus) => {
 const updateCampus = (campus) => {
   return {
     type: CONSTANTS.UPDATE_CAMPUS,
-    campus
+    campus,
   }
 }
 const setStudents = (students) => {
@@ -68,7 +68,17 @@ const unregisterStudent = (student,campus) => {
     campus
   }
 }
-
+const setErrors = (errors) => {
+  return {
+    type: CONSTANTS.SET_ERRORS,
+    errors
+  }
+}
+const clearErrors = () => {
+  return {
+    type: CONSTANTS.CLEAR_ERRORS
+  }
+}
 const CREATORS = {
   setCampus,
   setCampuses,
@@ -81,6 +91,8 @@ const CREATORS = {
   updateStudent,
   unregisterStudent,
   registerStudent,
+  setErrors,
+  clearErrors
+};
 
-}
 export default CREATORS;

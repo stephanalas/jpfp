@@ -21,8 +21,9 @@ Campus.init({
       type: DataTypes.STRING,
       allowNull:false,
       validate: {
-        notEmpty: true,
-        notNull: true
+        notEmpty: {
+          msg : 'address cannot be empty'
+        }
       }
     },
     description: {

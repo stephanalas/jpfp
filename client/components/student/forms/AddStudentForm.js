@@ -1,27 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import CREATORS from '../../../store/actions/creators';
 import thunks from '../../../store/thunks';
 
 class AddStudentForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       firstName : '',
       lastName: '',
       email: '',
+      errors: [],
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
   }
-  async onSubmit(ev) {
-    ev.preventDefault();
-    const { firstName, lastName, email } = this.state
-    try {
-      await this.props.create(firstName, lastName, email);
-    } catch (error) {
-      console.log(error);
+  componentDidMount() {
+    this.setState({...this.state, errors: []});
+  }
+  componentDidUpdate(prevProps) {
+    const { errors, clearErr } = this.props;
+    if (prevProps.errors.length !== errors.length) {
+      this.setState({...this.state, errors: prevProps.errors })
+      clearErr()
     }
   }
+  componentWillUnmount() {
+    this.setState({...this.state, errors: []})
+  }
+  onSubmit(ev) {
+    ev.preventDefault();
+    const { firstName, lastName, email } = this.state
+    this.props.create(firstName, lastName, email);
+  }
+
   onChange(ev) {
     this.setState({[ev.target.name]: ev.target.value})
   }
@@ -46,6 +58,15 @@ class AddStudentForm extends Component {
             </label>
             <input name='email'  value={email} onChange={onChange} ></input>
           </section>
+          <ul className='error-list'>
+            {
+              this.state.errors.map(err => {
+                return (
+                  <li className='error-message'>{err.message}</li>
+                )
+              } )
+            }
+          </ul>
           <button className='add-btn'>Add Student</button>
         </form>
       </main>
@@ -53,9 +74,16 @@ class AddStudentForm extends Component {
   }
 }
 
-export default connect(null, (dispatch, { history }) => {
-  const { createStudent } = thunks.student
+export default connect(state => {
+  const { errors } = state;
   return {
-    create: async (firstName, lastName, email,) => dispatch(createStudent(firstName, lastName, email, history))
+    errors
+  }
+}, (dispatch, { history }) => {
+  const { createStudent } = thunks.student;
+  const { clearErrors } = CREATORS;
+  return {
+    create: (firstName, lastName, email,) => dispatch(createStudent(firstName, lastName, email, history)),
+    clearErr: () => dispatch(clearErrors())
   }
 })(AddStudentForm);

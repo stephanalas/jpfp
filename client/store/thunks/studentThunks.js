@@ -17,29 +17,34 @@ const fetchStudents = () => {
 
 const createStudent = (firstName, lastName, email, history) => {
   return async (dispatch) => {
-    try {
-      const student = (await axios.post('/api/students/', {firstName, lastName, email })).data;
-      dispatch(CREATORS.createStudent(student));
-      history.push('/students');
+
+    axios.post('/api/students/', {firstName, lastName, email})
+      .then(res => {
+        dispatch(CREATORS.createStudent(res.data))
+        history.push('/students');
+      }).catch(err => {
+        const { errors } = err.response.data;
+        dispatch(CREATORS.setErrors(errors))
+        console.log('called from createStudent');
+      }) 
       
-    } catch (error) {
-      console.log('called from createStudent')
-      console.log(error);
-    }
   };
 };
 const updateStudent = (id, data, history) => {
   return async (dispatch) => {
-    try {
-      const student = (await axios.put(`/api/students/${id}`, data)).data
-      dispatch(CREATORS.updateStudent(student));
-      history.push(`/students/${student.id}`);
-    } catch (error) {
-      console.log('called from updateStudent ');
-      console.log(error)
-    }
-  }
+
+    axios.put(`/api/students/${id}`, data)
+      .then(res => {
+        dispatch(CREATORS.updateStudent(res.data))
+        history.push(`/students/${id}`)
+      }).catch(err => {
+        const { errors } = err.response.data;
+        dispatch(CREATORS.setErrors(errors))
+        console.log('called from updateStudent')
+      })
+    };
 }
+
 const registerStudent = (id, campusId) => {
   return async (dispatch) => {
     try {

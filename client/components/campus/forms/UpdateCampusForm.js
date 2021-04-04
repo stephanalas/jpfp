@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
+import CREATORS from '../../../store/actions/creators';
 import thunks from '../../../store/thunks'
 
 class UpdateCampusForm extends Component {
@@ -10,6 +11,7 @@ class UpdateCampusForm extends Component {
       address: '',
       imageUrl: '',
       description: '',
+      errors: []
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -20,9 +22,20 @@ class UpdateCampusForm extends Component {
       name: campus.name,
       address: campus.address,
       imageUrl: campus.imageUrl,
-      description: campus.description
+      description: campus.description,
+      errors: []
     }
     this.setState(newState);
+  }
+  componentDidUpdate(prevProps) {
+    const { errors, clearErr } = this.props;
+    if (prevProps.errors.length !== errors.length) {
+      this.setState({...this.state, errors: prevProps.errors})
+      clearErr()
+    }
+  }
+  componentWillUnmount() {
+    this.setState({...this.state, errors: []})
   }
   onSubmit(ev) {
     ev.preventDefault();
@@ -38,11 +51,10 @@ class UpdateCampusForm extends Component {
   }
 
   onChange(ev) {
-    this.setState({[ev.target.name] : ev.target.value})
-    console.log(ev.target.name, this.state[ev.target.name])
+    this.setState({[ev.target.name] : ev.target.value});
   }
   render() {
-    const { onSubmit, onChange, state: {name, address, imageUrl, description}} = this;
+    const { onSubmit, onChange, state: {name, address, imageUrl, description} } = this;
     return (
       <form onSubmit={onSubmit}>
           <section>
@@ -61,15 +73,30 @@ class UpdateCampusForm extends Component {
             <label htmlFor={description} >Campus Description: </label>
             <textarea name='description' className='campus-description-textarea' value={description} onChange={onChange} ></textarea>
           </section>
+          <ul className='error-list'>
+            {
+              this.state.errors.map(err => {
+                return (
+                  <li className='error-message'>{err.message}</li>
+                )
+              } )
+            }
+          </ul>
             <button className='add-btn'>Update Campus</button>
         </form>
     )
   }
 }
 
-export default connect(null, (dispatch) => {
-  const { updateCampus } = thunks.campus;
+export default connect((state) => {
   return {
-    update: (campus, data, history) => dispatch(updateCampus(campus, data, history))
+    errors: state.errors
+  }
+}, (dispatch) => {
+  const { updateCampus } = thunks.campus;
+  const { clearErrors } = CREATORS;
+  return {
+    update: (campus, data, history) => dispatch(updateCampus(campus, data, history)),
+    clearErr: () => dispatch(clearErrors())
   }
 })(UpdateCampusForm);

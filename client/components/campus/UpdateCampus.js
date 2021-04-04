@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
 import UpdateCampusForm from './forms/UpdateCampusForm';
 import StudentRow from '../student/StudentRow';
 import AddStudentCampusForm from './forms/AddStudentCampusForm';
+import thunks from '../../store/thunks';
 
 const UpdateCampus = ({campus, history, students }) => {
     return (
@@ -21,10 +22,8 @@ const UpdateCampus = ({campus, history, students }) => {
 }
 
 
-export default connect((state, { match, history } ) => {
-  
-  const campus = state.campuses.find(campus => campus.id === match.params.id*1) || {}
-  const students = state.students || [];
+export default connect(({campuses, students}, { match, history } ) => {
+  const campus = campuses.find(campus => campus.id === match.params.id*1) || {}
   return {
     campus,
     students,

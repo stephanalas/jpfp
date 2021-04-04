@@ -8,25 +8,30 @@ Student.init({
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true,
-      notNull: true
+      notEmpty: {
+        msg: 'First name cannot be empty'
+      }
     }
   },
   lastName: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      notEmpty: true,
-      notNull: true
+      notEmpty: {
+        msg: 'Last name cannot be empty'
+      }
     }
   },
   email: {
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      isEmail: true,
-      notNull: true,
-      notEmpty: true
+      isEmail: {
+        msg: 'must be a valid Email'
+      },
+      notEmpty: {
+        msg: 'E-mail cannot be empty'
+      }
     }
   },
   imageUrl: {

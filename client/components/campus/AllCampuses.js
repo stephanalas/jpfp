@@ -5,10 +5,12 @@ import CampusCard from './CampusCard';
 
 
 const AllCampuses = ({campuses, destroy, history }) => {
+  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(thunks.campus.fetchCampuses())
   }, [dispatch])
+
     if (campuses.length === 0) {
       return (
         <main className='no-view'>
@@ -34,14 +36,14 @@ const AllCampuses = ({campuses, destroy, history }) => {
     )
 };
 
-export default connect(({campuses}, { history }) => ({campuses, history}), (dispatch) => {
+export default connect(({campuses}, { history }) => ({campuses, history}), (dispatch, {history}) => {
   const { destroyCampus, fetchCampuses } = thunks.campus 
   return {
     load : () => {
       dispatch(fetchCampuses())
     },
     destroy: (campus) => {
-      dispatch(destroyCampus(campus));
+      dispatch(destroyCampus(campus, history));
     }
 
   }

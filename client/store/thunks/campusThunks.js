@@ -28,28 +28,31 @@ const fetchCampuses = () => {
 };
 
 const createCampus = (name, address, history) => {
-  return async (dispatch) => {
-    try {
-      const campus = (await axios.post('/api/campuses', {name, address} )).data;
-      dispatch(CREATORS.createCampus(campus));
-      history.push('/campuses');
-    } catch (error) {
-      console.log('called from createCampus ');
-      console.log(error);
-    }
+  return (dispatch) => {
+    axios.post('/api/campuses', {name, address})
+      .then(res =>  {
+        dispatch(CREATORS.updateCampus(res.data))
+        history.push('/campuses')
+      }).catch(err => {
+        const { errors } = err.response.data;
+        dispatch(CREATORS.setErrors(errors))
+        console.log('called from createCampus ');
+
+      })
   };
 };
 const updateCampus = (id, data, history) => {
-  return async (dispatch) => {
-    try {
-
-      const campus = (await axios.put(`/api/campuses/${id}`, data)).data;
-      dispatch(CREATORS.updateCampus(campus))
-      history.push(`/campuses/${id}`); 
-    } catch (error) {
-      console.log('called from updateCampus ');
-      console.log(error);
-    }
+  return  (dispatch) => {
+    axios.put(`/api/campuses/${id}`, data)
+    .then(res => {
+      dispatch(CREATORS.updateCampus(res.data))
+      history.push(`/campuses/${id}`);
+      console.log(campus);
+    }).catch(err => {
+      const { errors } = err.response.data
+      dispatch(CREATORS.setErrors(errors))
+      console.log('called from updateCampus')
+    })
   }
 }
 
@@ -57,8 +60,8 @@ const destroyCampus = (campus, history) => {
   return async (dispatch) => {
     try {
       dispatch(CREATORS.destroyCampus(campus));
-      await axios.delete(`/api/campuses/${campus.id}`)
       history.push('/campuses')
+      await axios.delete(`/api/campuses/${campus.id}`)
     } catch (error) {
       console.log('called from destroyCampus ')
       console.log(error)

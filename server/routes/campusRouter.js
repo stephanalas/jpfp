@@ -29,17 +29,6 @@ campusRouter.delete('/:id', async (req, res, next) => {
   try {
     const { id } = req.params
     const campus = await Campus.findByPk(id);
-    const students = await Student.findAll({
-      where: {
-        campusId : campus.id
-      }
-    });
-
-    // try commenting out later
-    for (let student of students) {
-      student.campusId = null
-      await student.save()
-    }
     await campus.destroy();
     console.log('campus deleted');
     res.sendStatus(200)
@@ -52,14 +41,13 @@ campusRouter.post('/', async (req, res, next) => {
   try {
     const { name, address } = req.body
     res.status(201).send(await Campus.create({ name, address}, { include: [Student]}))
-  } catch (error) {
-    next(error)
+  } catch (err) {
+    res.status(400).json(err)
   }
 })
 campusRouter.put('/:id', async (req, res, next) => {
   try {
     const { name, address, imageUrl, description } = req.body;
-    console.log(req)
     const campus = await Campus.findByPk(req.params.id, { include: [Student]});
     campus.name = name;
     campus.address = address;
@@ -68,8 +56,8 @@ campusRouter.put('/:id', async (req, res, next) => {
     await campus.save();
     await campus.reload();
     res.status(202).send(campus);
-  } catch (error) {
-    next(error)
+  } catch (err) {
+    res.status(400).json(err)
 
   }
 })

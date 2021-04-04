@@ -25,7 +25,7 @@ class AddStudentCampusForm extends Component {
         <select value={this.state.value} onChange={this.handleChange} name='students'>
           <option>Select student ...</option>
           {
-            this.props.students.map(student => <option value={`${student.id}`}>{student.firstName} {student.lastName}</option>)
+            this.props.students.map(student => <option key={student.id} value={`${student.id}`}>{student.firstName} {student.lastName}</option>)
           }
         </select>
         <button className='add-btn'>Add to Campus</button>

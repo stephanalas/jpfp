@@ -3,12 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const CampusCard = ({ campus, destroy }) => {
-  // const [campusLocal, setCampus] = useState(campus);
-
-  //   useEffect( () => {
-  //     setCampus(campus)
-  //   }, campusLocal);
-  
   return (
     <li key={campus.id} className='campus-card'>
     <img src={campus.imageUrl} className='campus-img' />

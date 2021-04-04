@@ -17,7 +17,7 @@ studentRouter.post('/', async (req, res, next) => {
     const student = await Student.create({ firstName, lastName, email});
     res.status(201).send(student);
   } catch (error) {
-    next(error)
+    res.status(400).json(error);
   }
 })
 
@@ -50,7 +50,7 @@ studentRouter.put('/:id', async (req, res, next) => {
     await student.reload();
     res.status(202).send(student);
   } catch (error) {
-    next(error)
+    res.status(400).json(error)
   }
 })
 studentRouter.delete('/:id', async (req, res, next) => {
