@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nf ./server/index.js",
     "test": "mocha",
     "test:dev": "npm test -- --watch",
     "start:dev": "npm run start-server & npm run build:dev",
@@ -38,5 +39,8 @@
     "redux-thunk": "^2.3.0",
     "webpack": "^5.27.0",
     "webpack-cli": "^4.5.0"
+  },
+  "engines": {
+    "node": "14.15.4"
   }
 }
